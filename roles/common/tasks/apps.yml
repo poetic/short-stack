@@ -1,0 +1,26 @@
+---
+- name: tap caskroom/cask so that we can install brew-cask
+  homebrew_tap: tap=caskroom/cask state=present
+- name: install brew-cask
+  homebrew: name=brew-cask state=latest
+- name: install commonly used applications using Homebrew Cask
+  homebrew_cask: name={{ item }} state=present
+  with_items:
+    - 1password
+    - dash
+    - divvy
+    - dropbox
+    - firefox
+    - google-chrome
+    - google-drive
+    - iterm2
+    - libreoffice
+    - linkinus
+    - sketch
+    - slack
+    - sourcetree
+    - spotify
+    - sublime-text
+    - vagrant
+    - virtualbox
+    - xmplify

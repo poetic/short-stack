@@ -1,0 +1,6 @@
+---
+- name: A playbook to configure Poetic laptops
+  hosts: localhost
+  connection: local
+  roles:
+    - common

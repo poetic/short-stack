@@ -1,0 +1,3 @@
+---
+- include: shell.yml
+- include: apps.yml
