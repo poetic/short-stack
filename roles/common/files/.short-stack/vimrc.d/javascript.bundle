@@ -1,0 +1,3 @@
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'pangloss/vim-javascript'

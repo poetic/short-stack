@@ -1,0 +1,22 @@
+---
+- name: copy .vimrc into ~
+  copy:
+    src: .vimrc
+    dest: ~/.vimrc
+- name: create vimrc.d directory
+  file: path=~/.short-stack/vimrc.d state=directory
+- name: install vundle
+  git: repo=https://github.com/gmarik/Vundle.vim.git
+       dest=~/.vim/bundle/Vundle.vim
+- name: copy common.vimrc into vimrc.d
+  copy:
+    src: .short-stack/vimrc.d/common.vimrc
+    dest: ~/.short-stack/vimrc.d/common.vimrc
+- name: copy common.bundle into vimrc.d
+  copy:
+    src: .short-stack/vimrc.d/common.bundle
+    dest: ~/.short-stack/vimrc.d/common.bundle
+- name: copy colors.bundle into vimrc.d
+  copy:
+    src: .short-stack/vimrc.d/colors.bundle
+    dest: ~/.short-stack/vimrc.d/colors.bundle

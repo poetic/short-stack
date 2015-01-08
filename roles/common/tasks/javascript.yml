@@ -1,0 +1,4 @@
+- name: copy javascript.bundle into vimrc.d
+  copy:
+    src: .short-stack/vimrc.d/javascript.bundle
+    dest: ~/.short-stack/vimrc.d/javascript.bundle
