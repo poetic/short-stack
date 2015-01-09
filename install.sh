@@ -6,6 +6,7 @@ echo 'Boostrapping your computer...'
 # Xcode Command Line Tools
 if [[ ! -x `xcode-select -p 2>/dev/null` ]]; then
   xcode-select --install
+  read -rsp $'Press any key when the installation has completed.\n' -n 1 key
 fi
 
 # Clone Short Stack
