@@ -15,8 +15,6 @@ MMMM    M     oMM"MMo     M"
         "M"M"
 '
 
-echo 'Boostrapping your computer...'
-
 # Oh My ZSH!
 if [[ ! -d ~/.oh-my-zsh ]]; then
   curl -L http://install.ohmyz.sh | sh
