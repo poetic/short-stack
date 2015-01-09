@@ -39,4 +39,4 @@ if [[ ! -x `which ansible` ]]; then
 fi
 
 # Run Poetic playbook
-ansible-playbook site.yml -i inventory --ask-sudo-pass
+ansible-playbook ~/.short-stack/site.yml -i ~/.short-stack/inventory --ask-sudo-pass

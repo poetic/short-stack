@@ -1,19 +1,5 @@
 #!/bin/bash
 set -e
-echo '
-       ooMMMo
-    ooMMoMMoMMMoo
- oMMM"MoM" "M"MM"MMo
-MMMoM""       ""MMM"M                            M   M"
-MM"M     o o     M"MM     oooMoo  ooMoo   ooMo  MMoo oo  ooMoo
-MMMM    "MMMo    MMMo     MM   M Mo"  MM M"o MM "M   "M "M
-MoMM   "MMM"M    MMMM     Mo   M"Mo   oM"MM " "  Mo  MM MM
-M"MM    M""      MMoM     "MoMM"  "MoM"  "oMoM" "MoM Mo  "oMo"
-MMMM    M     oMM"MMo     M"
- "oM   "" ooMM"MMM""
-        MMM"MMM"
-        "M"M"
-'
 
 echo 'Boostrapping your computer...'
 
@@ -36,3 +22,6 @@ fi
 if [[ ! -x `which short-stack` ]]; then
   sudo ln -s ~/.short-stack/short-stack /usr/local/bin/
 fi
+
+# Run Short Stack
+short-stack
