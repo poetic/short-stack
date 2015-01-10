@@ -2,4 +2,4 @@
 Our delicious development stack, fully automated.
 
 # Install
-`curl -L https://raw.githubusercontent.com/poetic/short-stack/master/install.sh | sh`
+`bash <(curl -s curl -L https://raw.githubusercontent.com/poetic/short-stack/master/install.sh)`
