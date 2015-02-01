@@ -21,7 +21,7 @@ if [[ ! -d /usr/local/bin ]]; then
 fi
 
 # Install Short Stack
-if [[ ! -x `which short-stack` ]]; then
+if [[ ! -f /usr/loca/bin/short-stack ]]; then
   sudo ln -s ~/.short-stack/short-stack /usr/local/bin/
 fi
 
