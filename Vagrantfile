@@ -16,7 +16,10 @@ Vagrant.configure(2) do |config|
     # Customize the amount of memory on the VM:
     vb.memory = 2048
 
+    # Required for nfs
+    config.vm.network :private_network, ip: '10.1.1.100'
+
     # See: https://github.com/timsutton/osx-vm-templates#shared-folders
-    config.vm.synced_folder '.', '/vagrant', type: 'rsync'
+    config.vm.synced_folder '.', '/vagrant', type: 'nfs'
   end
 end
