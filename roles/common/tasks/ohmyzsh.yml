@@ -1,0 +1,11 @@
+---
+- name: Determine if zsh is the current shell
+  shell: echo $SHELL
+  register: current_shell
+- name: Clone oh-my-zsh
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
+- name: Copy template .zshrc file into place
+  copy: src=~/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc force=no
+- name: Change shell to zsh
+  shell: sudo chsh -s /bin/zsh {{ ansible_user_id }}
+  when: current_shell.stdout != '/bin/zsh'

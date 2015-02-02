@@ -15,11 +15,6 @@ MMMM    M     oMM"MMo     M"
         "M"M"
 '
 
-# Oh My ZSH!
-if [[ ! -d ~/.oh-my-zsh ]]; then
-  curl -L http://install.ohmyz.sh | sh
-fi
-
 # Homebrew
 if [[ ! -x /usr/local/bin/brew ]]; then
   echo 'Installing homebrew...'
