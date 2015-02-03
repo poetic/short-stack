@@ -15,23 +15,5 @@ MMMM    M     oMM"MMo     M"
         "M"M"
 '
 
-# Homebrew
-if [[ ! -x /usr/local/bin/brew ]]; then
-  echo 'Installing homebrew...'
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
-# Pip
-if [[ ! -x `which pip` ]]; then
-  echo 'Installing pip...'
-  sudo easy_install pip
-fi
-
-# Ansible
-if [[ ! -x `which ansible` ]]; then
-  echo 'Installing ansible...'
-  sudo pip install ansible --quiet
-fi
-
 # Run Poetic playbook
 ansible-playbook ~/.short-stack/site.yml -i ~/.short-stack/inventory --ask-sudo-pass
