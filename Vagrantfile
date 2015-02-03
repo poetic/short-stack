@@ -22,4 +22,16 @@ Vagrant.configure(2) do |config|
     # See: https://github.com/timsutton/osx-vm-templates#shared-folders
     config.vm.synced_folder '.', '/vagrant', type: 'nfs'
   end
+
+  # Run installer but skip running short-stack
+  config.vm.provision :shell,
+    path: 'install.sh',
+    args: "'--skip-short-stack'",
+    privileged: false,
+    keep_color: true
+
+  # Run short-stack directly
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = 'site.yml'
+  end
 end
