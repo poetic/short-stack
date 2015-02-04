@@ -32,6 +32,6 @@ Vagrant.configure(2) do |config|
 
   # Run short-stack directly
   config.vm.provision :ansible do |ansible|
-    ansible.playbook = 'site.yml'
+    ansible.playbook = 'stack.yml'
   end
 end

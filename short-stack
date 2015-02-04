@@ -86,11 +86,11 @@ generate() {
   fi
 
   out # Need newline for clean output
-  if [[ -f ~/.short-stack/site.yml ]]; then
-    cp ~/.short-stack/site.yml ~/.short-stack.yml
+  if [[ -f ~/.short-stack/stack.yml ]]; then
+    cp ~/.short-stack/stack.yml ~/.short-stack.yml
     success "~/.short-stack.yml created sucessfully."
   else
-    die "~/.short-stack/site.yml doesn't exist."
+    die "~/.short-stack/stack.yml doesn't exist."
   fi
 
   safe_exit
@@ -116,8 +116,8 @@ MMMM    M     oMM"MMo     M"
     out "Running ~/.short-stack.yml"
     ansible-playbook ~/.short-stack.yml -i ~/.short-stack/inventory --ask-sudo-pass
   else
-    out "Running ~/.short-stack/site.yml"
-    ansible-playbook ~/.short-stack/site.yml -i ~/.short-stack/inventory --ask-sudo-pass
+    out "Running ~/.short-stack/stack.yml"
+    ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory --ask-sudo-pass
   fi
 }
 
