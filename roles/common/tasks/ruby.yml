@@ -3,3 +3,8 @@
   copy:
     src: .short-stack/vimrc.d/ruby.bundle
     dest: ~/.short-stack/vimrc.d/ruby.bundle
+- name: copy .gemrc into ~
+  copy:
+    src: .gemrc
+    dest: ~/.gemrc
+
