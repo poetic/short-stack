@@ -1,19 +1,202 @@
 #!/bin/bash
+#
+# Borrowed from: https://github.com/oxyc/bash-boilerplate
+
+# Preamble {{{
+# Exit immediately on error
 set -e
-echo '
-       ooMMMo
+
+# Detect whether output is piped or not.
+[[ -t 1 ]] && piped=0 || piped=1
+
+# Defaults
+force=0
+quiet=0
+verbose=0
+generate=0
+args=()
+# }}}
+
+# Helpers {{{
+out() {
+  ((quiet)) && return
+
+  local message="$@"
+  if ((piped)); then
+    message=$(echo $message | sed '
+      s/\\[0-9]\{3\}\[[0-9]\(;[0-9]\{2\}\)\?m//g;
+      s/✖/Error:/g;
+      s/✔/Success:/g;
+    ')
+  fi
+  printf '%b\n' "$message";
+}
+die() { out "$@"; exit 1; } >&2
+err() { out " \033[1;31m✖\033[0m  $@"; } >&2
+success() { out " \033[1;32m✔\033[0m  $@"; }
+
+# Verbose logging
+log() { (($verbose)) && out "$@"; }
+
+# Notify on function success
+notify() { [[ $? == 0 ]] && success "$@" || err "$@"; }
+
+# Escape a string
+escape() { echo $@ | sed 's/\//\\\//g'; }
+
+# Unless force is used, confirm with user
+confirm() {
+  (($force)) && return 0;
+
+  read -p "$1 [y/N] " -n 1;
+  [[ $REPLY =~ ^[Yy]$ ]];
+}
+
+# }}}
+# Script logic -- TOUCH THIS {{{
+version="v0.0.1"
+
+# Print usage
+usage() {
+  echo -n "Usage: $(basename $0) [options]
+  -g, --generate    Generate a .short-stack.yml
+  -f, --force       Skip all user interaction
+  -q, --quiet       Quiet (no output)
+  -v, --verbose     Output more
+  -h, --help        Display this help and exit
+      --version     Output version information and exit
+"
+}
+
+# Set a trap for cleaning up in case of errors or when script exits.
+rollback() {
+  die
+}
+
+# Put your script here
+generate() {
+  if [[ -f ~/.short-stack.yml ]]; then
+    if ! confirm "Overwrite ~/.short-stack.yml?"; then
+      die
+    fi
+  else
+    if ! confirm "Generate a .short-stack.yml?"; then
+      die
+    fi
+  fi
+
+  out # Need newline for clean output
+  if [[ -f ~/.short-stack/site.yml ]]; then
+    cp ~/.short-stack/site.yml ~/.short-stack.yml
+    success "~/.short-stack.yml created sucessfully."
+  else
+    die "~/.short-stack/site.yml doesn't exist."
+  fi
+
+  safe_exit
+}
+
+main() {
+  out '
+      ooMMMo
     ooMMoMMoMMMoo
- oMMM"MoM" "M"MM"MMo
+oMMM"MoM" "M"MM"MMo
 MMMoM""       ""MMM"M                            M   M"
 MM"M     o o     M"MM     oooMoo  ooMoo   ooMo  MMoo oo  ooMoo
 MMMM    "MMMo    MMMo     MM   M Mo"  MM M"o MM "M   "M "M
 MoMM   "MMM"M    MMMM     Mo   M"Mo   oM"MM " "  Mo  MM MM
 M"MM    M""      MMoM     "MoMM"  "MoM"  "oMoM" "MoM Mo  "oMo"
 MMMM    M     oMM"MMo     M"
- "oM   "" ooMM"MMM""
+"oM   "" ooMM"MMM""
         MMM"MMM"
         "M"M"
 '
 
-# Run Poetic playbook
-ansible-playbook ~/.short-stack/site.yml -i ~/.short-stack/inventory --ask-sudo-pass
+  if [[ -f ~/.short-stack.yml ]]; then
+    out "Running ~/.short-stack.yml"
+    ansible-playbook ~/.short-stack.yml -i ~/.short-stack/inventory --ask-sudo-pass
+  else
+    out "Running ~/.short-stack/site.yml"
+    ansible-playbook ~/.short-stack/site.yml -i ~/.short-stack/inventory --ask-sudo-pass
+  fi
+}
+
+# }}}
+# Boilerplate {{{
+# Iterate over options breaking -ab into -a -b when needed and --foo=bar into
+# --foo bar
+optstring=h
+unset options
+while (($#)); do
+  case $1 in
+    # If option is of type -ab
+    -[!-]?*)
+      # Loop over each character starting with the second
+      for ((i=1; i < ${#1}; i++)); do
+        c=${1:i:1}
+
+        # Add current char to options
+        options+=("-$c")
+
+        # If option takes a required argument, and it's not the last char make
+        # the rest of the string its argument
+        if [[ $optstring = *"$c:"* && ${1:i+1} ]]; then
+          options+=("${1:i+1}")
+          break
+        fi
+      done
+      ;;
+    # If option is of type --foo=bar
+    --?*=*) options+=("${1%%=*}" "${1#*=}") ;;
+    # add --endopts for --
+    --) options+=(--endopts) ;;
+    # Otherwise, nothing special
+    *) options+=("$1") ;;
+  esac
+  shift
+done
+set -- "${options[@]}"
+unset options
+
+# Set our rollback function for unexpected exits.
+trap rollback INT TERM EXIT
+
+# A non-destructive exit for when the script exits naturally.
+safe_exit() {
+  trap - INT TERM EXIT
+  exit
+}
+
+# }}}
+# Main loop {{{
+# Read the options and set stuff
+while [[ $1 = -?* ]]; do
+  case $1 in
+    -h|--help) usage >&2; safe_exit ;;
+    --version) out "$(basename $0) $version"; safe_exit ;;
+    -v|--verbose) verbose=1 ;;
+    -q|--quiet) quiet=1 ;;
+    -f|--force) force=1 ;;
+    -g|--generate) generate=1 ;;
+    --endopts) shift; break ;;
+    *) die "invalid option: $1" ;;
+  esac
+  shift
+done
+
+# Store the remaining part as arguments.
+args+=("$@")
+# }}}
+
+# Run it {{{
+if ((generate)); then
+  generate
+fi
+
+# You should delegate your logic from the `main` function
+main
+
+# This has to be run last not to rollback changes we've made.
+safe_exit
+# }}}
+
