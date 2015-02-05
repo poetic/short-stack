@@ -1,8 +1,6 @@
 ---
-- include: ohmyzsh.yml
-- include: shell.yml
 - include: apps.yml
-- include: vim.yml
-- include: ruby.yml
-- include: tmux.yml
 - include: javascript.yml
+- include: ohmyzsh.yml
+- include: ruby.yml
+- include: shell.yml

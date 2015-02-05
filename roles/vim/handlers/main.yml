@@ -1,0 +1,3 @@
+---
+- name: vim PlugInstall
+  shell: vim +PlugInstall +qall

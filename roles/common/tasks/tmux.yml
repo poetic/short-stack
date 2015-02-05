@@ -1,4 +1,0 @@
-- name: copy tmux.bundle into vimrc.d
-  copy:
-    src: .short-stack/vimrc.d/tmux.bundle
-    dest: ~/.short-stack/vimrc.d/tmux.bundle

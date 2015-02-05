@@ -1,0 +1,9 @@
+---
+- homebrew: name=tmux state=latest
+
+- file: path={{ vimrc_d }} state=directory
+  when: "'vim' in role_names"
+
+- copy: src=tmux.bundle dest={{ vimrc_d }}/tmux.bundle
+  when: "'vim' in role_names"
+  notify: vim PlugInstall

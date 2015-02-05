@@ -1,0 +1,3 @@
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'jgdavey/vim-turbux'

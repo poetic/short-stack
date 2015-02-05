@@ -1,5 +1,0 @@
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'baskerville/bubblegum'
-Plugin 'dhruvasagar/vim-railscasts-theme'
-Plugin 'junegunn/seoul256.vim'
-Plugin 'vim-scripts/xoria256.vim'
