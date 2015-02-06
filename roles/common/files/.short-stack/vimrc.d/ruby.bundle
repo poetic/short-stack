@@ -1,6 +1,0 @@
-Plug 'rodjek/vim-puppet'
-Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-cucumber'
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'

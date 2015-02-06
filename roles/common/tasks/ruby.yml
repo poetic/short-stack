@@ -1,10 +1,5 @@
----
-- name: copy ruby.bundle into vimrc.d
-  copy:
-    src: .short-stack/vimrc.d/ruby.bundle
-    dest: ~/.short-stack/vimrc.d/ruby.bundle
 - name: copy .gemrc into ~
   copy:
-    src: .gemrc
+    src: gemrc
     dest: ~/.gemrc
 

@@ -4,17 +4,12 @@
 - homebrew_tap: tap=neovim/neovim state=present
 - homebrew: name=neovim state=head
 
-- copy: src=.vimrc dest=~/.vimrc
+- name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
+  shell: curl https://j.mp/spf13-vim3 -L -o - | sh
+  notify: vim bundle install
 
-- file: path=~/.vim/autoload state=directory
-- name: install vim-plug
-  get_url:
-    url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    dest: ~/.vim/autoload/plug.vim
+- copy: src=vimrc.bundles.fork dest=~/.vimrc.bundles.fork
 
 - file: path={{ vimrc_d }} state=directory
-- copy: src={{ item }} dest={{ vimrc_d }}
-  with_items:
-    - common.vimrc
-    - common.bundle
-    - colors.bundle
+- copy: src=common.bundle dest={{ vimrc_d }}
+  notify: vim bundle install

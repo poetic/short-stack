@@ -1,0 +1,3 @@
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'pangloss/vim-javascript'

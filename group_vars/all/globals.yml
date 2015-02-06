@@ -1,2 +1,2 @@
 ss_root: ~/.short-stack
-vimrc_d: "{{ ss_root }}/vimrc.d"
+vimrc_d: ~/.vimrc.d

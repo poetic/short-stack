@@ -1,6 +1,5 @@
 ---
 - include: apps.yml
-- include: javascript.yml
 - include: ohmyzsh.yml
 - include: ruby.yml
 - include: shell.yml

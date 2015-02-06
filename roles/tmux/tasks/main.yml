@@ -6,4 +6,4 @@
 
 - copy: src=tmux.bundle dest={{ vimrc_d }}/tmux.bundle
   when: "'vim' in role_names"
-  notify: vim PlugInstall
+  notify: vim bundle install

@@ -1,0 +1,6 @@
+Bundle 'rodjek/vim-puppet'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-cucumber'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-rails'
+Bundle 'vim-ruby/vim-ruby'
