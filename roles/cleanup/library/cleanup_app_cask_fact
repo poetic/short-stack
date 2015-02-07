@@ -1,0 +1,21 @@
+#!/usr/bin/ruby
+# WANT_JSON
+
+require 'rubygems'
+require 'json'
+
+File.open(ARGV[0]) do |fh|
+
+  data        = JSON.parse(fh.read())
+  changed     = {'changed' => false}
+  app_cask    = data['app']
+  avail_apps  = data['to_update']
+  app_dir     = /(.*\.app)/.match(`brew cask info #{app_cask}`)
+
+  if app_dir && File.directory?("/Applications/#{app_dir[0].strip}")
+    `brew cask uninstall #{app_cask}`
+    changed['changed'] = true
+  end
+
+  print JSON.dump(changed)
+end
