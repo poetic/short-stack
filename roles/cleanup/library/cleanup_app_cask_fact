@@ -9,7 +9,6 @@ File.open(ARGV[0]) do |fh|
   data        = JSON.parse(fh.read())
   changed     = {'changed' => false}
   app_cask    = data['app']
-  avail_apps  = data['to_update']
   app_dir     = /(.*\.app)/.match(`brew cask info #{app_cask}`)
 
   if app_dir && File.directory?("/Applications/#{app_dir[0].strip}")
