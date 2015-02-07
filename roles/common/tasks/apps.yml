@@ -1,8 +1,10 @@
 ---
 - name: tap caskroom/cask so that we can install brew-cask
   homebrew_tap: tap=caskroom/cask state=present
+
 - name: install brew-cask
   homebrew: name=brew-cask state=latest
+
 - name: install commonly used applications using Homebrew Cask
   homebrew_cask: name={{ item }} state=present
   with_items:
