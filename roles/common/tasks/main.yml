@@ -3,3 +3,4 @@
 - include: ohmyzsh.yml
 - include: ruby.yml
 - include: shell.yml
+- include: config.yml
