@@ -1,7 +1,0 @@
----
-- name: Json gem is required for running custom fact ruby scripts
-  action: gem name=json state=present
-
-- action: cleanup_app_cask_fact app={{ item }}
-  with_items:
-    - "{{ apps }}"
