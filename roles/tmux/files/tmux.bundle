@@ -1,3 +1,4 @@
 Bundle 'benmills/vimux'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'jgdavey/vim-turbux'
+Bundle 'edkolev/tmuxline.vim'
