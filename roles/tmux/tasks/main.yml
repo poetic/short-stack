@@ -7,3 +7,9 @@
 - copy: src=tmux.bundle dest={{ vimrc_d }}/tmux.bundle
   when: "'vim' in role_names"
   notify: vim bundle install
+
+- name: create tmux conf.d dir
+  file: path={{ vimrc_d }} state=directory
+
+- copy: src=tmux.conf dest=~/.tmux.conf
+- file: path={{ tmux_d }} state=directory

@@ -11,10 +11,12 @@
 
   " Map leader
   let mapleader = ","
-" }
 
-" ctrlp {
-  set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/dist/*,*/node_modules/*
-  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tmp|vim|dist)$'
-" }
+  " indent every line in the file with <,I>
+  nnoremap <Leader>i mmgg=G`m
 
+  " Removes trailing spaces when vim writes
+  function! TrimWhiteSpace()
+    %s/\s\+$//e
+  endfunction
+" }

@@ -1,2 +1,3 @@
 ss_root: ~/.short-stack
 vimrc_d: ~/.vimrc.d
+tmux_d: ~/.tmux.d
