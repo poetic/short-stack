@@ -1,0 +1,20 @@
+"
+" Short Stack spf13-vim .fork config
+"
+
+" .vimrc {
+  " Map <Esc> to jj
+  :inoremap jj <Esc>
+
+  " Use ; as :
+  nnoremap ; :
+
+  " Map leader
+  let mapleader = ","
+" }
+
+" ctrlp {
+  set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/dist/*,*/node_modules/*
+  let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|tmp|vim|dist)$'
+" }
+

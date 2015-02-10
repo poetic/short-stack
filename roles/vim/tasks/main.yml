@@ -10,6 +10,8 @@
 
 - copy: src=vimrc.bundles.fork dest=~/.vimrc.bundles.fork
 
+- copy: src=vimrc.fork dest=~/.vimrc.fork
+
 - file: path={{ vimrc_d }} state=directory
 - copy: src=common.bundle dest={{ vimrc_d }}
   notify: vim bundle install
