@@ -5,3 +5,25 @@
     - common
     - tmux
     - vim
+
+  vars:
+    # Homebrew cask apps
+    apps:
+      - 1password
+      - dash
+      - divvy
+      - dropbox
+      - firefox
+      - google-chrome
+      - google-drive
+      - iterm2
+      - libreoffice
+      - linkinus
+      - sketch
+      - slack
+      - sourcetree
+      - spotify
+      - sublime-text
+      - vagrant
+      - virtualbox
+      - xmplify

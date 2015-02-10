@@ -1,26 +1,30 @@
 ---
 - name: tap caskroom/cask so that we can install brew-cask
   homebrew_tap: tap=caskroom/cask state=present
+
 - name: install brew-cask
   homebrew: name=brew-cask state=latest
-- name: install commonly used applications using Homebrew Cask
-  homebrew_cask: name={{ item }} state=present
+
+- name: Get app names from homebrew cask apps
+  shell: brew cask info {{ item }} | grep -o -E '(.*)\.app' | sed -e 's/^[ \t]*//'
   with_items:
-    - 1password
-    - dash
-    - divvy
-    - dropbox
-    - firefox
-    - google-chrome
-    - google-drive
-    - iterm2
-    - libreoffice
-    - linkinus
-    - sketch
-    - slack
-    - sourcetree
-    - spotify
-    - sublime-text
-    - vagrant
-    - virtualbox
-    - xmplify
+    - "{{ apps }}"
+  register: app_info
+
+- name: register apps that need to be installed
+  shell: test -d '/Applications/{{ item.stdout }}' && echo "0" || echo "{{ item.item }}"
+  with_items:
+    - "{{ app_info.results }}"
+  register: apps_to_install
+
+- name: install applications using homebrew cask
+  homebrew_cask: name={{ item.item.item }} state=present
+  with_items:
+    - "{{ apps_to_install.results }}"
+  when: item.stdout != "0"
+
+- name: uninstall cask apps present in /Applications
+  homebrew_cask: name={{ item.item.item }} state=absent
+  with_items:
+    - "{{ apps_to_install.results }}"
+  when: item.stdout == "0"
