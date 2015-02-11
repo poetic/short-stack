@@ -1,0 +1,14 @@
+---
+- name: install nvm
+  homebrew: name=nvm state=head
+
+- name: add nvm path names to ~/.zshrc
+  file: path=~/.nvm state=directory
+- shell: echo "export NVM_DIR=~/.nvm" >> ~/.zshrc
+- shell: echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.zshrc
+
+- name: install node stable
+  shell: . ~/.zshrc && nvm install stable
+
+- name: install iojs stable
+  shell: . ~/.zshrc && nvm install iojs

@@ -4,3 +4,4 @@
 - include: ruby.yml
 - include: shell.yml
 - include: config.yml
+- include: javascript.yml
