@@ -19,7 +19,10 @@
   function! TrimWhiteSpace()
     %s/\s\+$//e
   endfunction
+" }
 
-  " tmux line theme
-  let g:tmuxline_theme = 'icebert'
+" vim-airline {
+  let g:airline_left_sep = '|'
+  let g:airline_right_sep = '|'
+  let g:airline_theme='badwolf'
 " }
