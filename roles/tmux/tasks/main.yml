@@ -15,16 +15,16 @@
 - file: path={{ tmux_d }} state=directory
 
 - name: add temporary folder to store fonts
-  file: path=~/.short-stack-temp state=directory
+  file: path=/tmp state=directory
 
 - name: add patched powerline fonts
-  git: repo=https://github.com/powerline/fonts.git dest=~/.short-stack-temp/fonts
+  git: repo=https://github.com/powerline/fonts.git dest=/tmp/fonts
 
 - name: run powerline fonts installer
-  shell: ~/.short-stack-temp/fonts/install.sh
+  shell: /tmp/fonts/install.sh
   register: font_installer_echo
 
 - debug: msg="{{ font_installer_echo.stdout }}"
 
 - name: cleanup temporary folder
-  file: path=~/.short-stack-temp state=absent
+  file: path=/tmp state=absent
