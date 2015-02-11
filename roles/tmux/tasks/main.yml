@@ -31,3 +31,6 @@
 
 - name: cleanup temporary folder
   file: path=/tmp/fonts state=absent
+
+- name: add tmux theme.conf
+  copy: src=theme.conf dest=~/.tmux.d/theme.conf
