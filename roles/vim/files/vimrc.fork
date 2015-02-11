@@ -19,4 +19,7 @@
   function! TrimWhiteSpace()
     %s/\s\+$//e
   endfunction
+
+  " tmux line theme
+  let g:tmuxline_theme = 'icebert'
 " }
