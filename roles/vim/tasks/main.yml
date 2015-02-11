@@ -10,6 +10,7 @@
 
 - copy: src=vimrc.bundles.fork dest=~/.vimrc.bundles.fork
 
+- copy: src=vimrc.before.fork dest=~/.vimrc.before.fork
 - copy: src=vimrc.fork dest=~/.vimrc.fork
 
 - file: path={{ vimrc_d }} state=directory
