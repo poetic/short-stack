@@ -5,6 +5,8 @@
 # https://github.com/mitchty/bootstrap/blob/master/osx-user.yml
 # and others from multiple other places on the web.
 
+# TODO: give proper format to this file
+
 ## Caps Lock Map
 - name: "Get internal usb keyboard vendor/product ids"
   shell: >
@@ -318,3 +320,6 @@
 - name: "Shwo icons for removable media on desktop"
   command: "defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true"
   when: show_icons_for_removable_media_on_desktop != "1"
+
+- name: set up iterm2 default config
+  copy: src=com.googlecode.iterm2.plist dest=~/Library/Preferences/com.googlecode.iterm2.plist
