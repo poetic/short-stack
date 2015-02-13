@@ -1,28 +1,16 @@
-"
-" Short Stack spf13-vim .fork config
-"
+" Map <Esc> to jj
+:inoremap jj <Esc>
 
-" .vimrc {
-  " Map <Esc> to jj
-  :inoremap jj <Esc>
+" Use ; as :
+nnoremap ; :
 
-  " Use ; as :
-  nnoremap ; :
+" Map leader
+let mapleader = ","
 
-  " Map leader
-  let mapleader = ","
+" indent every line in the file with <,I>
+nnoremap <Leader>i mmgg=G`m
 
-  " indent every line in the file with <,I>
-  nnoremap <Leader>i mmgg=G`m
-
-  " Removes trailing spaces when vim writes
-  function! TrimWhiteSpace()
-    %s/\s\+$//e
-  endfunction
-" }
-
-" vim-airline {
-  let g:airline_left_sep = '|'
-  let g:airline_right_sep = '|'
-  let g:airline_theme='badwolf'
-" }
+" Removes trailing spaces when vim writes
+function! TrimWhiteSpace()
+%s/\s\+$//e
+endfunction
