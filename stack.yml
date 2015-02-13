@@ -5,9 +5,9 @@
     - common
     - tmux
     - vim
+    - drupal
 
   vars:
-    # Homebrew cask apps
     apps:
       - 1password
       - dash
