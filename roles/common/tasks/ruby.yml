@@ -1,5 +1,0 @@
----
-- name: copy .gemrc into $HOME
-  copy:
-    src: gemrc
-    dest: ~/.gemrc
