@@ -4,8 +4,8 @@
 
 - name: add nvm path names to ~/.zshrc
   file: path=~/.nvm state=directory
-- shell: echo "export NVM_DIR=~/.nvm" >> ~/.zshrc
-- shell: echo "source $(brew --prefix nvm)/nvm.sh" >> ~/.zshrc
+- lineinfile: dest=~/.zshrc line="export NVM_DIR=~/.nvm" state=present
+- lineinfile: dest=~/.zshrc line="source /usr/local/opt/nvm/nvm.sh" state=present
 
 - name: install node stable
   shell: . ~/.zshrc && nvm install stable

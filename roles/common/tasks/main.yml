@@ -3,5 +3,4 @@
 - include: ohmyzsh.yml
 - include: databases.yml
 - include: shell.yml
-- include: javascript.yml
 - include: config.yml

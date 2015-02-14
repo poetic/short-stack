@@ -4,6 +4,7 @@
   roles:
     - common
     - ruby
+    - javascript
     - tmux
     - vim
     - drupal
