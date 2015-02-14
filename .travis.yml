@@ -1,6 +1,6 @@
 ---
-os:
-  - osx
+# Run on OS X
+language: objective-c
 
 script:
   - "bash install.sh --skip-short-stack"
