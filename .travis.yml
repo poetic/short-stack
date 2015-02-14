@@ -3,4 +3,4 @@ os:
   - osx
 
 script:
-  - "install.sh --skip-short-stack"
+  - "sh install.sh --skip-short-stack"
