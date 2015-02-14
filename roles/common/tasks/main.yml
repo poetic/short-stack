@@ -2,5 +2,4 @@
 - include: apps.yml
 - include: ohmyzsh.yml
 - include: databases.yml
-- include: shell.yml
 - include: config.yml
