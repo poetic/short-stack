@@ -3,7 +3,7 @@
 language: objective-c
 
 install:
-  - sudo pip install ansible
+  - sudo pip install ansible --quiet
 
 script:
   - bash install.sh --skip-short-stack
