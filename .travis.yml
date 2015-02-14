@@ -2,5 +2,8 @@
 # Run on OS X
 language: objective-c
 
+install:
+  - pip install ansible
+
 script:
   - "bash install.sh --skip-short-stack"
