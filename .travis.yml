@@ -1,0 +1,6 @@
+---
+os:
+  - osx
+
+script:
+  - "install.sh --skip-short-stack"
