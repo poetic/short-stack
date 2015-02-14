@@ -2,6 +2,9 @@
 # Run on OS X
 language: objective-c
 
+before_install:
+  - brew update
+
 install:
   - sudo pip install ansible --quiet
 
