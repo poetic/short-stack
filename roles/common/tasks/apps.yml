@@ -6,7 +6,7 @@
   homebrew: name=brew-cask state=latest
 
 - name: Get app names from homebrew cask apps
-  shell: brew cask info {{ item }} | grep -o -E '(.*)\.app' | sed -e 's/^[ \t]*//'
+  shell: brew cask info {{ item }} | grep -o -E '(.*)\.app|(.*)\.pkg' | sed -e 's/^[ \t]*//'
   with_items:
     - "{{ apps }}"
   register: app_info
