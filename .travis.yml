@@ -6,4 +6,5 @@ install:
   - sudo pip install ansible
 
 script:
-  - bash install.sh
+  - bash install.sh --skip-short-stack
+  - ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory
