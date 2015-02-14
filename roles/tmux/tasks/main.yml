@@ -27,7 +27,7 @@
 - debug: msg="{{ font_installer_echo.stdout }}"
 
 - name: add monaco powerline patched font
-  copy: src=monaco_for_powerline.otf dest='~/Library/Fonts/Monaco for Powerline.otf'
+  copy: src=monaco_for_powerline.otf dest='~/Library/Fonts/Monaco for Powerline.otf' force=no
 
 - name: cleanup temporary folder
   file: path=/tmp/fonts state=absent
