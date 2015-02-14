@@ -27,7 +27,7 @@ fi
 # Install ansible
 if [[ ! -x `which ansible` ]]; then
   echo 'Installing ansible...'
-  sudo pip install ansible --quiet
+  pip install ansible --quiet
 fi
 
 # Clone short-stack
@@ -38,6 +38,14 @@ fi
 # Create /usr/local if it doesn't exist
 if [[ ! -d /usr/local/bin ]]; then
   sudo mkdir -p /usr/local/bin
+  sudo chown -R $USER /usr/local/bin
+fi
+
+# Install ansible-galaxy roles from galaxy file
+if [[ -f ~/.short-stack/galaxy ]]; then
+  echo 'Adding roles from ansible-galaxy... '
+  sudo ansible-galaxy install -r ~/.short-stack/galaxy -i
+  sudo chown -R $USER /etc/ansible
 fi
 
 # Install short-stack
