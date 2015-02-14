@@ -3,6 +3,7 @@
   hosts: all
   roles:
     - common
+    - ruby
     - tmux
     - vim
     - drupal
