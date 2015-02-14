@@ -20,6 +20,8 @@ fi
 if [[ ! -x `which pip` ]]; then
   echo 'Installing pip...'
   sudo easy_install pip
+  sudo chown -R $USER /Library/Python/2.7/site-packages
+  sudo chown -R $USER /System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7
 fi
 
 # Install ansible
