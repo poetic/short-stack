@@ -113,11 +113,17 @@ MMMM    M     oMM"MMo     M"
 '
 
   if [[ -f ~/.short-stack.yml ]]; then
-    out "Running ~/.short-stack.yml"
-    ansible-playbook ~/.short-stack.yml -i ~/.short-stack/inventory --ask-sudo-pass
+    playbook=~/.short-stack.yml
   else
-    out "Running ~/.short-stack/stack.yml"
-    ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory --ask-sudo-pass
+    playbook=~/.short-stack/stack.yml
+  fi
+
+  out "Running ${playbook}"
+
+  if ((verbose)); then
+    ansible-playbook $playbook -i ~/.short-stack/inventory --ask-sudo-pass -vvvv
+  else
+    ansible-playbook $playbook -i ~/.short-stack/inventory --ask-sudo-pass
   fi
 }
 
