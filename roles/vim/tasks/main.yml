@@ -4,6 +4,25 @@
 - copy: src=vimrc.before.fork dest=~/.vimrc.before.fork
 - copy: src=vimrc.fork dest=~/.vimrc.fork
 
+- name: check for existence of current psf13-vim install
+  stat: path=~/.spf13-vim-3
+  register: spf13
+
+- name: get latest commit SHA of current installation
+  shell: cd ~/.spf13-vim-3 && git rev-parse HEAD
+  register: spf13_current_sha
+  when: spf13.stat.exists and spf13.stat.isdir
+
+- name: get spf13-vim-3 latest SHA from remote
+  shell: git ls-remote https://github.com/spf13/spf13-vim | awk "/3\.0/ {print\$1}"
+  register: spf13_latest_sha
+  when: spf13.stat.exists and spf13.stat.isdir
+
+- name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
+  shell: curl https://j.mp/spf13-vim3 -L -o - | sh
+  notify: vim bundle install
+  when: not spf13.stat.exists or spf13_current_sha.stdout != spf13_latest_sha.stdout
+
 - file: path={{ vimrc_d }} state=directory
 - copy: src="{{ item }}.bundle" dest={{ vimrc_d }}
   with_items:
