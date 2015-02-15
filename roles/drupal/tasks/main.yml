@@ -1,4 +1,4 @@
 ---
 - homebrew_tap: tap=homebrew/php state=present
-- homebrew: name=php55 state=latest
+- homebrew: name=php56 state=latest
 - homebrew: name=drush state=head
