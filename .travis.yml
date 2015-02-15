@@ -14,3 +14,9 @@ script:
 notifications:
   slack:
     secure: eDUJqpiWoEaJ29HqWF44MVesPy0Jlh2Q+nmWaffk56JpVv4sk6FKAIjU+za5/p+XOFGPWLw29X/rgi2DiBAy+5A013fnztBrz5FokofUI17sg0g85pnxQcOJX5gxg9N4Ip5CvTFOw9uN1rEMQsJgb8DJIE3Sg2W1Q5YxBALB4XY=
+  webhooks:
+    urls:
+      - https://webhooks.gitter.im/e/4fd37ad90f96843e34ee
+    on_success: change
+    on_failure: always
+    on_start: false
