@@ -1,4 +1,6 @@
 # short-stack
+
+[![Join the chat at https://gitter.im/poetic/short-stack](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/poetic/short-stack?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Our delicious development stack, fully automated.
 
 ## Install
