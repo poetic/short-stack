@@ -5,14 +5,14 @@ before_install:
 
 install:
 - sudo pip install ansible --quiet
-  # php55 usually times out, preinstall with travis_wait to avoid this.
+  # preinstall php with travis_wait to avoid timeout
 - brew tap homebrew/php
 - travis_wait brew install php56
 
 script:
 - bash install.sh --skip-short-stack
 - ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory --syntax-check
-#- ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory -vvvv
+- ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory
 
 notifications:
   slack:
