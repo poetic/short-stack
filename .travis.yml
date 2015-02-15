@@ -5,9 +5,9 @@ before_install:
 
 install:
 - sudo pip install ansible --quiet
+  # php55 usually times out, preinstall with travis_wait to avoid this.
 - brew tap homebrew/php
-- brew install composer
-- brew insatll drush --HEAD
+- travis_wait brew install php55
 
 script:
 - bash install.sh --skip-short-stack
