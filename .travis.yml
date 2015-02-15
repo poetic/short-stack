@@ -5,6 +5,7 @@ before_install:
 
 install:
 - sudo pip install ansible --quiet
+- brew tap homebrew/php
 - brew install composer
 - brew insatll drush --HEAD
 
