@@ -32,5 +32,5 @@ nnoremap <leader><space> :noh<cr>
 " relative number
 set relativenumber
 
-" indent every line in the file
+" indent every line in the file with <leader>i
 nnoremap <Leader>i mmgg=G`m

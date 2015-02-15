@@ -14,23 +14,55 @@
 - copy: src=tmux.conf dest=~/.tmux.conf
 - file: path={{ tmux_d }} state=directory
 
-- name: add temporary folder to store fonts
-  file: path=/tmp state=directory
+- name: ensure ~/Library/Fonts exists
+  file: path=~/Library/Fonts state=directory
 
-- name: add patched powerline fonts
-  git: repo=https://github.com/powerline/fonts.git dest=/tmp/fonts
-
-- name: run powerline fonts installer
-  shell: /tmp/fonts/install.sh
-  register: font_installer_echo
-
-- debug: msg="{{ font_installer_echo.stdout }}"
-
-- name: add monaco powerline patched font
+- name: ensure monaco powerline patched font
   copy: src=monaco_for_powerline.otf dest='~/Library/Fonts/Monaco for Powerline.otf' force=no
-
-- name: cleanup temporary folder
-  file: path=/tmp/fonts state=absent
 
 - name: add tmux theme.conf
   copy: src=theme.conf dest=~/.tmux.d/theme.conf
+
+# Ensure powerline fonts available through caskroom fonts
+# note:Monofur and Termnius are missing from cask
+# alternate source is https://github.com/powerline/fonts
+# InputMono is not free to distribute but highly recommended.
+
+- name: ensure brew-cask
+  homebrew: name=brew-cask state=latest
+
+- name: ensure brew tap caskroom/fonts
+  homebrew_tap: tap=caskroom/fonts state=present
+
+- name: ensure font-anonymous-pro-for-powerline
+  homebrew_cask: name=font-anonymous-pro-for-powerline state=present
+
+- name: ensure font-dejavu-sans-mono-for-powerline
+  homebrew_cask: name=font-dejavu-sans-mono-for-powerline state=present
+
+- name: ensure font-droid-sans-mono-for-powerline
+  homebrew_cask: name=font-droid-sans-mono-for-powerline state=present
+
+- name: ensure font-fira-mono-for-powerline
+  homebrew_cask: name=font-fira-mono-for-powerline state=present
+
+- name: ensure font-inconsolata-g-for-powerline
+  homebrew_cask: name=font-inconsolata-g-for-powerline state=present
+
+- name: ensure font-inconsolata-for-powerline
+  homebrew_cask: name=font-inconsolata-g-for-powerline state=present
+
+- name: ensure font-inconsolata-dz-for-powerline
+  homebrew_cask: name=font-inconsolata-dz-for-powerline state=present
+
+- name: ensure font-liberation-mono-for-powerline
+  homebrew_cask: name=font-liberation-mono-for-powerline state=present
+
+- name: ensure font-meslo-lg-for-powerline
+  homebrew_cask: name=font-meslo-lg-for-powerline state=present
+
+- name: ensure font-source-code-pro-for-powerline
+  homebrew_cask: name=font-source-code-pro-for-powerline state=present
+
+- name: ensure font-ubuntu-mono-powerline
+  homebrew_cask: name=font-ubuntu-mono-powerline state=present
