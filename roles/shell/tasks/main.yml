@@ -9,3 +9,10 @@
     - the_silver_searcher
     - wget
     - irssi
+
+- name: ensure aliases
+  file: path=~/.aliases.d state=directory
+- copy:
+    src: aliases
+    dest: ~/.aliases.d
+- lineinfile: dest=~/.zshrc line="[[ -f ~/.aliases.d/aliases ]] && source ~/.aliases.d/aliases"
