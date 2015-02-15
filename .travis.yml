@@ -5,11 +5,13 @@ before_install:
 
 install:
 - sudo pip install ansible --quiet
+- brew install composer
+- brew insatll drush --HEAD
 
 script:
 - bash install.sh --skip-short-stack
 - ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory --syntax-check
-- ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory -vvvv
+#- ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory -vvvv
 
 notifications:
   slack:
