@@ -1,2 +1,3 @@
 Bundle 'othree/javascript-libraries-syntax.vim'
 Bundle 'moll/vim-node'
+Bundle 'mxw/vim-jsx'
