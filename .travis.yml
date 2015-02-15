@@ -9,8 +9,9 @@ install:
   - sudo pip install ansible --quiet
   - brew tap homebrew/php
     # This usually times out: http://docs.travis-ci.com/user/build-timeouts/
-  - travis_wait brew install php55
+    # Run outside of ansible to get output to keep it from timing out
+  - brew install php55
 
 script:
   - bash install.sh --skip-short-stack
-  - ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory
+  #- ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory
