@@ -23,6 +23,7 @@ alias raisl='rails'
 alias rs='rails s'
 alias rc='rails c'
 alias rdb='rake db:migrate db:test:prepare'
+alias rv='rbenv'
 
 # -------------------------------------------------------------------
 # Heroku

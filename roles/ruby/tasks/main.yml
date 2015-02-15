@@ -3,3 +3,22 @@
   copy:
     src: gemrc
     dest: ~/.gemrc
+
+- name: ensure rbenv
+  homebrew: name=rbenv state=present
+- homebrew: name=ruby-build state=present
+
+- name: ensure ~/.rbenv dir
+  file: path=~/.rbenv state=directory
+
+- name: ensure rbenv ~/.zshrc config
+  lineinfile:
+    dest: ~/.zshrc
+    line: if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+    state: present
+
+- name: ensure a few rbenv plugins
+  homebrew: name=rbenv-default-gems state=present
+- homebrew: name=rbenv-gem-rehash state=present
+- homebrew: name=rbenv-vars state=present
+- homebrew: name=rbenv-bundle-exec state=present
