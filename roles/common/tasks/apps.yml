@@ -28,3 +28,9 @@
   with_items:
     - "{{ apps_to_install.results }}"
   when: item.stdout == "0"
+
+- name: ensure heroku toolbelt
+  homebrew: name=heroku-toolbelt state=present
+
+- name: ensure heroku accounts plugin
+  command: heroku plugins:install git://github.com/ddollar/heroku-accounts.git
