@@ -1,14 +1,16 @@
----
-# Run on OS X
 language: objective-c
 
 before_install:
-  - brew update
+- brew update
 
 install:
-  - sudo pip install ansible --quiet
+- sudo pip install ansible --quiet
 
 script:
-  - bash install.sh --skip-short-stack
-  - ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory --syntax-check
-  - ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory -vvvv
+- bash install.sh --skip-short-stack
+- ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory --syntax-check
+- ansible-playbook ~/.short-stack/stack.yml -i ~/.short-stack/inventory -vvvv
+
+notifications:
+  slack:
+    secure: eDUJqpiWoEaJ29HqWF44MVesPy0Jlh2Q+nmWaffk56JpVv4sk6FKAIjU+za5/p+XOFGPWLw29X/rgi2DiBAy+5A013fnztBrz5FokofUI17sg0g85pnxQcOJX5gxg9N4Ip5CvTFOw9uN1rEMQsJgb8DJIE3Sg2W1Q5YxBALB4XY=
