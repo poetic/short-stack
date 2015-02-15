@@ -25,3 +25,12 @@ autocmd BufWritePre     * :call TrimWhiteSpace()
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
+
+" Undo highlighted searches
+nnoremap <leader><space> :noh<cr>
+
+" relative number
+set relativenumber
+
+" indent every line in the file
+nnoremap <Leader>i mmgg=G`m

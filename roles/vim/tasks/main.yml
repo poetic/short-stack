@@ -1,15 +1,6 @@
 ---
 - homebrew: name=vim state=latest
-
-- homebrew_tap: tap=neovim/neovim state=present
-- homebrew: name=neovim state=head
-
-- name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
-  shell: curl https://j.mp/spf13-vim3 -L -o - | sh
-  notify: vim bundle install
-
 - copy: src=vimrc.bundles.fork dest=~/.vimrc.bundles.fork
-
 - copy: src=vimrc.before.fork dest=~/.vimrc.before.fork
 - copy: src=vimrc.fork dest=~/.vimrc.fork
 

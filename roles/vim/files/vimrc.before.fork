@@ -3,3 +3,7 @@
   let g:airline_theme='badwolf'
   let g:airline#extensions#bufferline#enabled = 0
 " }
+
+" disable OmniComplete {
+  let g:spf13_no_omni_complete = 1
+" }
