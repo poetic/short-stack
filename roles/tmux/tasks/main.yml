@@ -27,6 +27,7 @@
 # note:Monofur and Termnius are missing from cask
 # alternate source is https://github.com/powerline/fonts
 # InputMono is not free to distribute but highly recommended.
+# http://input.fontbureau.com/download/
 
 - name: ensure brew-cask
   homebrew: name=brew-cask state=latest
