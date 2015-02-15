@@ -7,7 +7,7 @@ install:
 - sudo pip install ansible --quiet
   # preinstall php with travis_wait to avoid timeout
 - brew tap homebrew/php
-- travis_wait brew install php56
+- travis_wait brew install php56 --without-pear
 
 script:
 - bash install.sh --skip-short-stack
