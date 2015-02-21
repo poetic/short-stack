@@ -5,10 +5,11 @@
     - autojump
     - chromedriver
     - ctags
+    - hub
+    - irssi
     - reattach-to-user-namespace
     - the_silver_searcher
     - wget
-    - irssi
 
 - name: ensure aliases
   file: path=~/.aliases.d state=directory
