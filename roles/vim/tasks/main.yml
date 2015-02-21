@@ -1,24 +1,35 @@
 ---
 - homebrew: name=vim state=latest
-- copy: src=vimrc.bundles.fork dest=~/.vimrc.bundles.fork
-- copy: src=vimrc.before.fork dest=~/.vimrc.before.fork
-- copy: src=vimrc.fork dest=~/.vimrc.fork
 
-- name: Installing spf13-vim, The Ultimate Vim Distribution (http://vim.spf13.com)
+- name: install spf13
   shell: curl https://j.mp/spf13-vim3 -L -o - | sh
   args:
     creates: ~/.spf13-vim-3/.vimrc
   notify: vim bundle install
 
-- git:
+- name: update spf13
+  git:
   args:
     repo: https://github.com/spf13/spf13-vim.git
     dest: ~/.spf13-vim-3
+  notify: vim bundle install
 
-- file: path={{ vimrc_d }} state=directory
-- copy: src="{{ item }}.bundle" dest={{ vimrc_d }}
+- name: add .fork shims for nice vimrc.d structure
+  copy: src={{ item }} dest=~/.{{ item }}
   with_items:
-    - common
-    - javascript
-    - ruby
+    - vimrc.bundles.fork
+    - vimrc.before.fork
+    - vimrc.fork
+
+- name: create vimrd.c directory
+  file: path={{ vimrc_d }} state=directory
+
+- name: add config to vimrc.d
+  copy: src={{ item }} dest={{ vimrc_d }}
+  with_items:
+    - common.bundle
+    - common.vimrc
+    - javascript.bundle
+    - javascript.vimrc.before
+    - ruby.bundle
   notify: vim bundle install

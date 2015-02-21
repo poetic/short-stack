@@ -1,0 +1,9 @@
+" vim-airline {
+  let g:airline_powerline_fonts=1
+  let g:airline_theme='badwolf'
+  let g:airline#extensions#bufferline#enabled = 0
+" }
+
+" jsx {
+  let g:jsx_ext_required = 0
+" }

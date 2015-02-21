@@ -1,5 +1,3 @@
-" Include files dropped in ~/.vimrc.d that end with .bundle {
-    for f in split(glob('~/.vimrc.d/*.bundle'), '\n')
-      exe 'source' f
-    endfor
-" }
+for f in split(glob('~/.vimrc.d/*.bundle'), '\n')
+  exe 'source' f
+endfor
