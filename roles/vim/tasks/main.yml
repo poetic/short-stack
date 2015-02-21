@@ -35,6 +35,6 @@
   notify: vim bundle install
 
 - name: add custom vim config to zsh
-  copy: src=vi-mode.zsh dest={{ zsh_c }}
+  copy: src=vim.zsh dest={{ zsh_c }}
   notify: reload zsh
   when: "'zsh' in role_names"

@@ -13,7 +13,13 @@
 
 - name: ensure aliases
   file: path=~/.aliases.d state=directory
+
 - copy:
     src: aliases
     dest: ~/.aliases.d
 - lineinfile: dest=~/.zshrc line="[[ -f ~/.aliases.d/aliases ]] && source ~/.aliases.d/aliases"
+
+- name: add custom shell config to zsh
+  copy: src=shell.zsh dest={{ zsh_c }}
+  notify: reload zsh
+  when: "'zsh' in role_names"
