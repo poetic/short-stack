@@ -1,0 +1,11 @@
+---
+- name: tap caskroom/cask so that we can install brew-cask
+  homebrew_tap: tap=caskroom/cask state=present
+
+- name: ensure brew-cask latest
+  homebrew: name=brew-cask state=latest
+
+- name: ensure presence of applications from apps variable
+  homebrew_cask: name={{ item }} state=present
+  with_items: apps
+  when: apps is defined

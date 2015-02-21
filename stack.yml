@@ -3,6 +3,7 @@
   hosts: all
   roles:
     - common
+    - apps
     - zsh
     - shell
     - ruby
