@@ -10,6 +10,7 @@
     - javascript
     - tmux
     - vim
+    - osx
     - drupal
 
   vars:
