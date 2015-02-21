@@ -11,22 +11,26 @@
     - drupal
 
   vars:
-    apps:
-      - 1password
-      - dash
-      - divvy
-      - dropbox
-      - firefox
-      - google-chrome
-      - google-drive
-      - iterm2
-      - libreoffice
-      - linkinus
-      - sketch
-      - slack
-      - sourcetree
-      - spotify
-      - sublime-text
-      - vagrant
-      - virtualbox
-      - xmplify
+
+    # Uncomment the apps variable and any apps you would like to install through
+    # short-stack. You can can also add more apps from http://caskroom.io/search
+
+    #apps:
+      #- 1password
+      #- dash
+      #- divvy
+      #- dropbox
+      #- firefox
+      #- google-chrome
+      #- google-drive
+      #- iterm2
+      #- libreoffice
+      #- linkinus
+      #- sketch
+      #- slack
+      #- sourcetree
+      #- spotify
+      #- sublime-text
+      #- vagrant
+      #- virtualbox
+      #- xmplify
