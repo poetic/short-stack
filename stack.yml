@@ -3,7 +3,7 @@
   hosts: all
   roles:
     - common
-    - apps
+    - cask
     - zsh
     - shell
     - ruby
@@ -14,10 +14,10 @@
 
   vars:
 
-    # Uncomment the apps variable and any apps you would like to install through
+    # Uncomment the cask variable and any apps you would like to install through
     # short-stack. You can can also add more apps from http://caskroom.io/search
 
-    #apps:
+    #cask:
       #- 1password
       #- dash
       #- divvy

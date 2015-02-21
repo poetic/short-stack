@@ -1,3 +1,0 @@
----
-- name: ensure heroku toolbelt
-  homebrew: name=heroku-toolbelt state=present

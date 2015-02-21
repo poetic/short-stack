@@ -1,5 +1,7 @@
 ---
-- include: apps.yml
 - include: databases.yml
 - include: directories.yml
 - include: config.yml
+
+- name: ensure heroku toolbelt
+  homebrew: name=heroku-toolbelt state=present

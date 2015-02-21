@@ -5,7 +5,7 @@
 - name: ensure brew-cask latest
   homebrew: name=brew-cask state=latest
 
-- name: ensure presence of applications from apps variable
+- name: ensure presence of apps from cask variable
   homebrew_cask: name={{ item }} state=present
-  with_items: apps
-  when: apps is defined
+  with_items: cask
+  when: cask is defined
