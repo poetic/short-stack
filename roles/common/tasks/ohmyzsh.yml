@@ -5,7 +5,9 @@
 - name: Clone oh-my-zsh
   git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=~/.oh-my-zsh
 - name: Copy template .zshrc file into place
-  copy: src=~/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc force=yes
+  copy: src=zshrc dest=~/.zshrc force=yes
 - name: Change shell to zsh
   shell: sudo chsh -s /bin/zsh {{ ansible_user_id }}
   when: current_shell.stdout != '/bin/zsh'
+- name: add vi-mode.zsh customizations
+  copy: src=vi-mode.zsh dest=~/.oh-my-zsh/custom
