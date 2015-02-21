@@ -5,15 +5,6 @@
 alias c='clear'
 
 # -------------------------------------------------------------------
-# Tmux
-# -------------------------------------------------------------------
-alias tma="tmux attach -t"
-alias tmn="tmux new -s"
-alias tml="tmux ls"
-alias tmo="tmuxinator open"
-alias tms="tmuxinator start"
-
-# -------------------------------------------------------------------
 # Ruby stuff
 # -------------------------------------------------------------------
 alias rake="noglob rake" # necessary to make rake work inside of zsh
