@@ -13,9 +13,7 @@
 
 - name: add custom zsh config
   copy: src=zsh.zsh dest={{ zsh_c }}
-  notify: reload zsh
 
 - name: change shell to zsh
   shell: sudo chsh -s /bin/zsh {{ ansible_user_id }}
   when: current_shell.stdout != '/bin/zsh'
-  notify: reload zsh

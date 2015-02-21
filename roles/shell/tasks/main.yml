@@ -21,5 +21,4 @@
 
 - name: add custom shell config to zsh
   copy: src=shell.zsh dest={{ zsh_c }}
-  notify: reload zsh
   when: "'zsh' in role_names"

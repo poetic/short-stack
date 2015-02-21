@@ -16,7 +16,6 @@
 
 - name: add custom tmux config to zsh
   copy: src=tmux.zsh dest={{ zsh_c }}
-  notify: reload zsh
   when: "'zsh' in role_names"
 
 - name: ensure ~/Library/Fonts exists
