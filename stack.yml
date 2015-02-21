@@ -2,16 +2,17 @@
 - name: A playbook to configure Poetic laptops
   hosts: all
   roles:
-    - common
     - cask
-    - zsh
-    - shell
-    - ruby
+    - common
+    - drupal
+    - heroku
     - javascript
+    - osx
+    - ruby
+    - shell
     - tmux
     - vim
-    - osx
-    - drupal
+    - zsh
 
   vars:
 

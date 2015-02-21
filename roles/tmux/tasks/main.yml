@@ -1,11 +1,7 @@
 ---
 - homebrew: name=tmux state=latest
 
-- file: path={{ vimrc_d }} state=directory
-  when: "'vim' in role_names"
-
 - copy: src=tmux.bundle dest={{ vimrc_d }}/tmux.bundle
-  when: "'vim' in role_names"
   notify: vim bundle install
 
 - name: create tmux conf.d dir
@@ -16,7 +12,6 @@
 
 - name: add custom tmux config to zsh
   copy: src=tmux.zsh dest={{ zsh_c }}
-  when: "'zsh' in role_names"
 
 - name: ensure ~/Library/Fonts exists
   file: path=~/Library/Fonts state=directory
