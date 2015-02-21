@@ -1,13 +1,16 @@
-" Map <Esc> to jj
+" Map leader
+let mapleader = ","
+
+" Map jj to <Esc>
 :inoremap jj <Esc>
 
 " Use ; as :
 nnoremap ; :
 
-" Map leader
-let mapleader = ","
+" Undo highlighted searches
+nnoremap <leader><space> :noh<cr>
 
-" indent every line in the file with <,I>
+" Indent every line in the file with <leader>i
 nnoremap <Leader>i mmgg=G`m
 
 " Removes trailing spaces
@@ -26,11 +29,5 @@ set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 
-" Undo highlighted searches
-nnoremap <leader><space> :noh<cr>
-
-" relative number
-set relativenumber
-
-" indent every line in the file with <leader>i
-nnoremap <Leader>i mmgg=G`m
+" Don't close NERDTree when opening a file
+let NERDTreeQuitOnOpen=0
