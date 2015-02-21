@@ -1,0 +1,6 @@
+---
+- file: path={{ tmux_d }} state=directory
+  when: "'tmux' in role_names"
+
+- file: path={{ vimrc_d }} state=directory
+  when: "'vim' in role_names"

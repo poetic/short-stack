@@ -1,5 +1,5 @@
 ---
 - include: apps.yml
-- include: ohmyzsh.yml
 - include: databases.yml
+- include: directories.yml
 - include: config.yml

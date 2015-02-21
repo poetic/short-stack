@@ -1,0 +1,21 @@
+---
+- name: Determine if zsh is the current shell
+  shell: echo $SHELL
+  register: current_shell
+
+  # Currently have a PR: https://github.com/robbyrussell/oh-my-zsh/pull/3617
+  # Once this gets merged, we can change back to master.
+- name: clone oh-my-zsh
+  git: repo=https://github.com/MatthewHager/oh-my-zsh.git dest=~/.oh-my-zsh
+
+- name: copy template .zshrc file into place
+  copy: src=~/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc force=yes
+
+- name: add custom zsh config
+  copy: src=zsh.zsh dest={{ zsh_c }}
+  notify: reload zsh
+
+- name: change shell to zsh
+  shell: sudo chsh -s /bin/zsh {{ ansible_user_id }}
+  when: current_shell.stdout != '/bin/zsh'
+  notify: reload zsh

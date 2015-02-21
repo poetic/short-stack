@@ -1,0 +1,1 @@
+plugins+=(zsh_reload)

@@ -21,7 +21,7 @@
     - vimrc.before.fork
     - vimrc.fork
 
-- name: create vimrd.c directory
+- name: create vimrd.d directory
   file: path={{ vimrc_d }} state=directory
 
 - name: add config to vimrc.d
@@ -33,3 +33,8 @@
     - javascript.vimrc.before
     - ruby.bundle
   notify: vim bundle install
+
+- name: add custom vim config to zsh
+  copy: src=vi-mode.zsh dest={{ zsh_c }}
+  notify: reload zsh
+  when: "'zsh' in role_names"

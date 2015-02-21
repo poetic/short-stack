@@ -1,0 +1,3 @@
+---
+- name: reload zsh
+  shell: src
