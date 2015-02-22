@@ -13,8 +13,8 @@
   roles:
     - drupal
     - heroku
-    - javascript
     - mongodb
+    - nvm
     - osx
     - postgresql
     - ruby

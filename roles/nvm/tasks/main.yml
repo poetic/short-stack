@@ -1,0 +1,13 @@
+---
+- name: install nvm
+  homebrew: name=nvm state=head
+
+- name: add custom nvm config to zsh
+  copy: src=nvm.zsh dest={{ zshrc_d }}
+
+- shell: source $(brew --prefix nvm)/nvm.sh && nvm install {{ item }}
+  with_items:
+    - stable
+    - iojs
+  register: nvm_install_result
+  changed_when: "'already installed' not in nvm_install_result.stderr"
