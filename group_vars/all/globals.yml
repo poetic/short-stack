@@ -1,4 +1,3 @@
-ss_root: ~/.short-stack
 tmux_d: ~/.tmux.d
 vimrc_d: ~/.vimrc.d
-zsh_c: ~/.oh-my-zsh/custom
+zshrc_d: ~/.zshrc.d

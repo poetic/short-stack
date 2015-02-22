@@ -11,8 +11,11 @@
 - name: copy template .zshrc file into place
   copy: src=~/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc force=yes
 
+- name: override zsh_custom path
+  lineinfile: dest=~/.zshrc line=ZSH_CUSTOM={{ zshrc_d }}
+
 - name: add custom zsh config
-  copy: src=zsh.zsh dest={{ zsh_c }}
+  copy: src=zsh.zsh dest={{ zshrc_d }}
 
 - name: change shell to zsh
   shell: sudo chsh -s /bin/zsh {{ ansible_user_id }}

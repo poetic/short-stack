@@ -11,7 +11,7 @@
 - file: path={{ tmux_d }} state=directory
 
 - name: add custom tmux config to zsh
-  copy: src=tmux.zsh dest={{ zsh_c }}
+  copy: src=tmux.zsh dest={{ zshrc_d }}
 
 - name: ensure ~/Library/Fonts exists
   file: path=~/Library/Fonts state=directory

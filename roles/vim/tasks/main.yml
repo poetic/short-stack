@@ -35,4 +35,4 @@
   notify: vim bundle install
 
 - name: add custom vim config to zsh
-  copy: src=vim.zsh dest={{ zsh_c }}
+  copy: src=vim.zsh dest={{ zshrc_d }}

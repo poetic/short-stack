@@ -3,4 +3,4 @@
   homebrew: name=heroku-toolbelt state=present
 
 - name: add custom vim config to zsh
-  copy: src=heroku.zsh dest={{ zsh_c }}
+  copy: src=heroku.zsh dest={{ zshrc_d }}

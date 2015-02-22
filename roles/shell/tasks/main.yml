@@ -22,4 +22,4 @@
 - lineinfile: dest=~/.zshrc line="[[ -f ~/.aliases.d/aliases ]] && source ~/.aliases.d/aliases"
 
 - name: add custom shell config to zsh
-  copy: src=shell.zsh dest={{ zsh_c }}
+  copy: src=shell.zsh dest={{ zshrc_d }}
