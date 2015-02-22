@@ -1,3 +1,2 @@
 ---
-- include: databases.yml
 - include: directories.yml

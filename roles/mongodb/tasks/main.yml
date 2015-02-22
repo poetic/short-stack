@@ -1,0 +1,12 @@
+---
+- name: ensure mongodb is installed
+  homebrew: name=mongodb state=present
+
+- file: path=~/Library/LaunchAgents state=directory
+
+- file:
+  args:
+    src: /usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist
+    path: ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
+    state: link
+  notify: start mongodb

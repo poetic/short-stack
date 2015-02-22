@@ -1,0 +1,12 @@
+---
+- name: ensure postgresql is installed
+  homebrew: name=postgresql state=present
+
+- file: path=~/Library/LaunchAgents state=directory
+
+- file:
+  args:
+    src: /usr/local/opt/postgresql/homebrew.mxcl.postgresql.plist
+    path: ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+    state: link
+  notify: start postgresql
