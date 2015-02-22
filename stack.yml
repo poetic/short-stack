@@ -1,9 +1,16 @@
 ---
-- name: A playbook to configure Poetic laptops
+- name: core roles
   hosts: all
   roles:
+    - bootstrap
     - cask
-    - common
+    - tmux
+    - vim
+    - zsh
+
+- name: optional roles
+  hosts: all
+  roles:
     - drupal
     - heroku
     - javascript
@@ -12,9 +19,6 @@
     - postgresql
     - ruby
     - shell
-    - tmux
-    - vim
-    - zsh
 
   vars:
 
