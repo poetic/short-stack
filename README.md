@@ -11,9 +11,3 @@ Our delicious development stack, fully automated.
 ## Details
 
 Short Stack is being built and tested on OSX Yosemite (10.10.x)
-
-## Development
-
-Are you developing locally using provisioning with vagrant?
-You'll need to run `ansible-galaxy install -r galaxy` on the short-stack root
-directory.
