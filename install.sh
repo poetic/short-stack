@@ -41,6 +41,13 @@ if [[ ! -d /usr/local/bin ]]; then
   sudo chown -R $USER /usr/local/bin
 fi
 
+# Install ansible-galaxy roles from galaxy file
+if [[ -f ~/.short-stack/galaxy ]]; then
+  echo 'Adding roles from ansible-galaxy... '
+  sudo ansible-galaxy install -r ~/.short-stack/galaxy -i
+  sudo chown -R $USER /etc/ansible
+fi
+
 # Install short-stack
 if [[ ! -L /usr/local/bin/short-stack ]]; then
   sudo ln -s ~/.short-stack/short-stack /usr/local/bin/short-stack
