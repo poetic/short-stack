@@ -1,10 +1,12 @@
 ---
-- name: ensure mongodb is installed
-  homebrew: name=mongodb state=present
+- name: install/update mongodb
+  homebrew: name=mongodb state=latest
 
-- file: path=~/Library/LaunchAgents state=directory
+- name: ensure ~/Library/LaunchAgents directory exists
+  file: path=~/Library/LaunchAgents state=directory
 
-- file:
+- name: ensure mongodb launch agent is installed
+  file:
   args:
     src: /usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist
     path: ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist

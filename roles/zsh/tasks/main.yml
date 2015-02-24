@@ -10,7 +10,7 @@
 - name: override zsh_custom path
   lineinfile: dest=~/.zshrc line=ZSH_CUSTOM={{ zshrc_d }}
 
-- name: add custom zsh config
+- name: add zsh configuration
   copy: src=zsh.zsh dest={{ zshrc_d }}
 
 - name: register current_shell variable
@@ -18,6 +18,6 @@
   register: current_shell
   changed_when: false
 
-- name: change shell to zsh
+- name: ensure shell is zsh
   shell: sudo chsh -s /bin/zsh {{ ansible_user_id }}
   when: current_shell.stdout != '/bin/zsh'

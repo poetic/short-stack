@@ -14,7 +14,7 @@
     - drupal
     - heroku
     - mongodb
-    - nvm
+    - node
     - osx
     - postgresql
     - ruby

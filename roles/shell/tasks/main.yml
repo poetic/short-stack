@@ -1,5 +1,5 @@
 ---
-- name: install commonly used command line tools
+- name: install/update commonly used command line tools
   homebrew: name={{ item }} state=latest
   with_items:
     - autojump
@@ -11,9 +11,11 @@
     - the_silver_searcher
     - wget
 
+  # TODO: convert to proper aliases.d directory and move this directory creation into the bootstrap role
 - name: ensure aliases
   file: path=~/.aliases.d state=directory
 
+  # TODO: split aliases up and put them in their respective roles
 - copy:
     src: aliases
     dest: ~/.aliases.d
@@ -21,5 +23,5 @@
   # TODO: convert this to a proper aliases.d structure with a *.zsh include file
 - lineinfile: dest=~/.zshrc line="[[ -f ~/.aliases.d/aliases ]] && source ~/.aliases.d/aliases"
 
-- name: add custom shell config to zsh
+- name: add shell configuration to zsh
   copy: src=shell.zsh dest={{ zshrc_d }}

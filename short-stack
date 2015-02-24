@@ -112,6 +112,13 @@ MMMM    M     oMM"MMo     M"
         "M"M"
 '
 
+  if [[ `git -C ~/.short-stack status --porcelain` ]]; then
+    out "Not auto-updating, ~/.short-stack directory not clean."
+  else
+    out "Updating short-stack..."
+    git -C ~/.short-stack pull
+  fi
+
   if [[ -f ~/.short-stack.yml ]]; then
     playbook=~/.short-stack.yml
   else
