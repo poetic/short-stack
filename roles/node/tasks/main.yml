@@ -1,11 +1,12 @@
 ---
-- name: install nvm
+- name: install/update nvm
   homebrew: name=nvm state=head
 
-- name: add custom nvm config to zsh
+- name: add nvm configuration to zsh
   copy: src=nvm.zsh dest={{ zshrc_d }}
 
-- shell: source $(brew --prefix nvm)/nvm.sh && nvm install {{ item }}
+- name: install node versions
+  shell: source $(brew --prefix nvm)/nvm.sh && nvm install {{ item }}
   with_items:
     - stable
     - iojs

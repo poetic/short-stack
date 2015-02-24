@@ -1,7 +1,8 @@
 ---
-- homebrew: name=vim state=latest
+- name: install/update vim
+  homebrew: name=vim state=latest
 
-- name: install spf13
+- name: ensure spf13 is installed
   shell: curl https://j.mp/spf13-vim3 -L -o - | sh
   args:
     creates: ~/.spf13-vim-3/.vimrc
@@ -21,10 +22,7 @@
     - vimrc.before.fork
     - vimrc.fork
 
-- name: create vimrd.d directory
-  file: path={{ vimrc_d }} state=directory
-
-- name: add config to vimrc.d
+- name: add configuration to vimrc.d
   copy: src={{ item }} dest={{ vimrc_d }}
   with_items:
     - common.bundle
@@ -34,5 +32,5 @@
     - ruby.bundle
   notify: vim bundle install
 
-- name: add custom vim config to zsh
+- name: add vim configuration to zsh
   copy: src=vim.zsh dest={{ zshrc_d }}

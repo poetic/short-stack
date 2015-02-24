@@ -1,6 +1,6 @@
 ---
-- name: ensure heroku toolbelt
-  homebrew: name=heroku-toolbelt state=present
+- name: install/update heroku-toolbelt
+  homebrew: name=heroku-toolbelt state=latest
 
-- name: add custom vim config to zsh
+- name: add heroku plugin to zsh
   copy: src=heroku.zsh dest={{ zshrc_d }}
