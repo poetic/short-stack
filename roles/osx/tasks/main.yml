@@ -6,6 +6,7 @@
 # and others from multiple other places on the web.
 
 ## Caps Lock Map
+
 - name: get internal usb keyboard vendor/product ids
   shell: >
     ioreg -n IOHIDKeyboard -r |
@@ -30,294 +31,41 @@
     -array "{HIDKeyboardModifierMappingDst=2;HIDKeyboardModifierMappingSrc=0;}"
   when: current_layout.stdout != "Dst2Src0"
 
-## Expand the save panel by default
-
-- name: get expanded save mode
-  command: defaults read NSGlobalDomain NSNavPanelExpandedStateForSaveMode
-  register: g_save_mode
-  failed_when: no
-
-- name: set expanded save panel mode
-  command: defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-  when: g_save_mode.stdout != "1"
-
-- name: get expanded save mode two
-  command: defaults read NSGlobalDomain NSNavPanelExpandedStateForSaveMode2
-  register: g_save_mode2
-  failed_when: no
-
-- name: set expanded save panel mode two
-  command: "defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true"
-  when: g_save_mode2.stdout != "1"
-
-## Disable the quarantine window prompt when install apps.
-
-- name: get launchservices quarantine setting
-  command: defaults read com.apple.LaunchServices LSQuarantine
-  register: g_save_mode2
-  failed_when: no
-
-- name: set launchservices quarantine setting to off
-  command: defaults write com.apple.LaunchServices LSQuarantine -bool false
-  when: g_save_mode2.stdout != "0"
-
-## Double click title bars to minimize
-
-- name: get AppleMiniaturizeOnDoubleClick setting
-  command: defaults read NSGlobalDomain AppleMiniaturizeOnDoubleClick
-  register: g_min_on_double_click
-  failed_when: no
-
-- name: set AppleMiniaturizeOnDoubleClick to true
-  command: defaults write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool false
-  when: g_min_on_double_click.stdout != "0"
-
-# Dock
-
-- name: get dock autohide value
-  command: defaults read com.apple.dock autohide
-  register: dock_autohide
-  failed_when: no
-
-- name: set dock autohide to true
-  command: defaults write com.apple.dock autohide -bool true
-  when: dock_autohide.stdout != "1"
-  notify: restart dock
-
-- name: get auto-hiding Dock delay
-  command: defaults read com.apple.dock autohide-delay
-  register: dock_autohide_delay
-  failed_when: no
-
-- name: Remove the auto-hiding Dock delay
-  shell: defaults write com.apple.dock autohide-delay -float 0
-  when: dock_autohide_delay.stdout != "1"
-
-## Dock should dim apps that have been hidden
-
-- name: get dock showhidden value
-  command: defaults read com.apple.dock showhidden
-  register: dock_showhidden
-  failed_when: no
-
-- name: set dock showhidden to true
-  command: defaults write com.apple.dock showhidden -bool true
-  when: dock_showhidden.stdout != "1"
-  notify: restart dock
-
-## Animations
-
-- name: see if animations are disabled
-  command: defaults read NSGlobalDomain NSAutomaticWindowAnimationsEnabled
-  register: global_domain_animations_enabled
-  failed_when: no
-
-- name: disable window animations
-  command: defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
-  when: global_domain_animations_enabled
-
-## Finder
-
-- name: get finder QuitMenuItem value
-  command: defaults read com.apple.finder QuitMenuItem
-  register: finder_quitmenuitem
-  failed_when: no
-
-- name: set finder QuitMenuItem to true
-  command: defaults write com.apple.finder QuitMenuItem -bool true
-  when: finder_quitmenuitem.stdout != "1"
-  notify: restart finder
-
-- name: get finder DSDontWriteNetworkStores value
-  command: defaults read com.apple.finder DSDontWriteNetworkStores
-  register: finder_dsdontwritenetworkstores
-  failed_when: no
-
-- name: Set finder QuitMenuItem to true
-  command: defaults write com.apple.finder DSDontWriteNetworkStores -bool true
-  when: finder_dsdontwritenetworkstores.stdout != "1"
-  notify: restart finder
-
-- name: get showstatusbar in finder
-  command: defaults read com.apple.finder ShowStatusBar
-  register: show_status_bar_in_finder
-  failed_when: no
-
-- name: set showstatusbar in finder
-  command:  defaults write com.apple.finder ShowStatusBar -bool true
-  when: show_status_bar_in_finder != "1"
-
-- name: get enable airdrop over ethernet and on unsupported macs
-  command: defaults read com.apple.NetworkBrowser BrowseAllInterfaces
-  register: enable_airdrop_on_all
-  failed_when: no
-
-- name: set airdrop over ethernet and unsopported macs
-  command: defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
-  when: enable_airdrop_on_all != "1"
-
-## File extensions
-
-- name: get finder AppleShowAllExtensions value
-  command: defaults read com.apple.finder AppleShowAllExtensions
-  register: finder_appleshowallextensions
-  failed_when: no
-
-- name: set finder AppleShowAllExtensions to true
-  command: defaults write com.apple.finder AppleShowAllExtensions -bool true
-  when: finder_appleshowallextensions.stdout != "1"
-  notify: restart finder
-
-- name: Get disable extension change warning
-  command: defaults read com.apple.finder FXEnableExtensionChangeWarning
-  register: disable_extension_change_warnings
-  failed_when: no
-
-- name: disable extension change warning
-  command: defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-  when: disable_extension_change_warnings != "0"
-  notify: restart finder
-
-## Trackpad
-
-- name: does the trackpad allow tap to click
-  command: defaults read com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking
-  register: trackpad_click_tap
-  failed_when: no
-
-- name: set the trackpad to tap to click
-  command: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-  when: trackpad_click_tap.stdout != "1"
-
-- name: get tap with two fingers to emulate right click
-  command: defaults read com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick
-  register: trackpad_right_click_tap
-
-- name: set tap with two fingers to emulate right click
-  command: defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
-  when: trackpad_right_click_tap != "1"
-
-## Keyboard
-
-- name: Read apple press and hold enabled
-  shell: defaults read NSGlobalDomain ApplePressAndHoldEnabled
-  register: press_and_hold_enabled
-  failed_when: no
-
-- name: disable press-and-hold for keys in favor of key repeat
-  shell: defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-  when: press_and_hold_enabled.stdout != "0"
-
-- name: get blazingly fast keyboard repeat rate
-  command: defaults read NSGlobalDomain KeyRepeat
-  register: blazing_fast_keyboard_repeat_reate
-  failed_when: no
-
-- name: set blazingly fast keyboard repeat rate
-  command: defaults write NSGlobalDomain KeyRepeat -int 0
-  when: blazing_fast_keyboard_repeat_reate != "0"
-
-- name: get shorter Delay UNTIL key repeat
-  command: defaults read NSGlobalDomain InitialKeyRepeat
-  register: shorter_delay_until_key_repeat
-  failed_when: no
-
-- name: set shorter Delay UNTIL key repeat
-  command: defaults write NSGlobalDomain InitialKeyRepeat -int 12
-  when: shorter_delay_until_key_repeat != "12"
-
-## Library
-
-- name: show the ~/Library folder
-  shell: chflags nohidden ~/Library
-
-## iOS Simulator
-
-- name: check that iOS simulator exists
-  shell: "[ -f /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app ] && echo '1' || echo '0'"
-  register: iOS_simulator_found
-
-- name: Add iOS Simulator to Launchpad
-  shell: ln -sf '/Applications/Xcode.app/Contents/Developer/Applications/iOS Simulator.app' '/Applications/iOS Simulator.app'
-  when: iOS_simulator_found == 1
-
-## Safari
-
-- name: get disable webkit homepage on safari canary builds
-  command: defaults read org.webkit.nightly.WebKit StartPageDisabled
-  register: disable_webkit_homepage
-  failed_when: no
-
-- name: disable webkit homepage on safari canary builds
-  command: defaults write org.webkit.nightly.WebKit StartPageDisabled -bool true
-  when: disable_webkit_homepage.stdout != "1"
-
-- name: enable the developer menu and the web inspector in safari
-  shell: >
-    defaults write com.apple.Safari IncludeDevelopMenu -bool true && \
-    defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true && \
-    defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true && \
-    defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
-
-## Software updates
-
-- name: get software updates daily is enabled
-  command: defaults read com.apple.SoftwareUpdate ScheduleFrequency
-  register: software_updates_daily_enabled
-  failed_when: no
-
-- name: set software updates daily
-  command: defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-  when: software_updates_daily_enabled != "1"
-
-## Sounds
-
-- name: get disable sound when changing volume
-  command: defaults read -g com.apple.sound.beep.feedback
-  register: disable_sound_when_changing_volume
-  failed_when: no
-
-- name: disable sound when changing volume
-  command: defaults write -g com.apple.sound.beep.feedback -integer 0
-  when: disable_sound_when_changing_volume != "0"
-
-## Desktop
-
-- name: show icons for hard drives on desktop
-  command: defaults read com.apple.finder ShowExternalHardDrivesOnDesktop
-  register: show_icons_for_hard_drives_on_desktop
-  failed_when: no
-
-- name: show icons for hard drives on desktop
-  command: defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-  when: show_icons_for_hard_drives_on_desktop != "1"
-
-- name: show icons for servers on desktop
-  command: defaults read com.apple.finder ShowMountedServersOnDesktop
-  register: show_icons_for_servers_on_desktop
-  failed_when: no
-
-- name: show icons for servers on desktop
-  command: defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-  when: show_icons_for_servers_on_desktop != "1"
-
-- name: show icons for servers on desktop
-  command: defaults read com.apple.finder ShowMountedServersOnDesktop
-  register: show_icons_for_servers_on_desktop
-  failed_when: no
-
-- name: show icons for servers on desktop
-  command: defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
-  when: show_icons_for_servers_on_desktop != "1"
-
-- name: show icons for removable media on desktop
-  command: defaults read com.apple.finder ShowRemovableMediaOnDesktop
-  register: show_icons_for_removable_media_on_desktop
-  failed_when: no
-
-- name: show icons for removable media on desktop
-  command: defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-  when: show_icons_for_removable_media_on_desktop != "1"
+- name: ensure the ruby json gem is present
+  action: gem name=json state=present
+- name: ensure the ruby CFPropertyList gem is present
+  action: gem name=CFPropertyList state=present
+
+- name: Ensure osx configuration
+  action: osx_write domain={{ item.domain }} key={{ item.key }} value={{ item.value }}
+  with_items:
+    - { domain: NSGlobalDomain, key: NSNavPanelExpandedStateForSaveMode, value: true }
+    - { domain: NSGlobalDomain, key: NSNavPanelExpandedStateForSaveMode2, value: true }
+    - { domain: NSGlobalDomain, key: NSNavPanelExpandedStateForSaveMode2, value: true }
+    - { domain: com.apple.LaunchServices, key: LSQuarantine, value: false }
+    - { domain: NSGlobalDomain, key: AppleMiniaturizeOnDoubleClick, value: false }
+    - { domain: com.apple.dock, key: autohide, value: true }
+    - { domain: com.apple.dock, key: autohide-delay, value: 0 }
+    - { domain: com.apple.dock, key: showhidden, value: true }
+    - { domain: com.apple.finder, key: QuitMenuItem, value: true }
+    - { domain: com.apple.finder, key: DSDontWriteNetworkStores, value: true }
+    - { domain: com.apple.finder, key: ShowStatusBar, value: true }
+    - { domain: com.apple.NetworkBrowser, key: BrowseAllInterfaces, value: true }
+    - { domain: com.apple.finder, key: AppleShowAllExtensions, value: true }
+    - { domain: com.apple.finder, key: FXEnableExtensionChangeWarning, value: false }
+    - { domain: com.apple.driver.AppleBluetoothMultitouch.trackpad, key: Clicking, value: 1 }
+    - { domain: com.apple.driver.AppleBluetoothMultitouch.trackpad, key: TrackpadRightClick, value: true }
+    - { domain: NSGlobalDomain, key: ApplePressAndHoldEnabled, value: false }
+    - { domain: NSGlobalDomain, key: KeyRepeat, value: 0 }
+    - { domain: NSGlobalDomain, key: InitialKeyRepeat, value: 6 }
+    - { domain: org.webkit.nightly.WebKit, key: StartPageDisabled, value: true }
+    - { domain: com.apple.Safari, key: IncludeDevelopMenu, value: true }
+    - { domain: com.apple.Safari, key: WebKitDeveloperExtrasEnabledPreferenceKey, value: true }
+    - { domain: com.apple.SoftwareUpdate, key: ScheduleFrequency, value: 1 }
+    - { domain: NSGlobalDomain, key: com.apple.sound.beep.feedback, value: 0 }
+    - { domain: com.apple.finder, key: ShowExternalHardDrivesOnDesktop, value: true }
+    - { domain: com.apple.finder, key: ShowMountedServersOnDesktop, value: true }
+    - { domain: com.apple.finder, key: ShowRemovableMediaOnDesktop, value: true }
 
 - name: set up iterm2 default config
   copy: src=com.googlecode.iterm2.plist dest=~/Library/Preferences/com.googlecode.iterm2.plist
