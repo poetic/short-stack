@@ -119,6 +119,8 @@ MMMM    M     oMM"MMo     M"
     git -C ~/.short-stack pull
   fi
 
+  export ANSIBLE_CONFIG=~/.short-stack/ansible.cfg
+
   out "Installing galaxy roles..."
   # TODO: Replace this with an update option if one becomes available
   # See: https://github.com/ansible/ansible/issues/6466
