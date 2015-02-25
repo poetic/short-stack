@@ -14,6 +14,7 @@
     awk '{print $4}' |
     paste -s -d'-\n' -
   register: kb_id
+  changed_when: false
 
 - name: read builtin keyboard map for caps lock setup
   shell: >
@@ -23,6 +24,7 @@
     perl -pe 's/HIDKeyboardModifierMapping//g'
   register: current_layout
   failed_when: no
+  changed_when: false
 
 - name: ensure builtin keyboard maps caps lock to control
   shell: >
