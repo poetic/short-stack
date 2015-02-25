@@ -14,10 +14,10 @@
   copy: src=zsh.zsh dest={{ zshrc_d }}
 
 - name: register current_shell variable
-  shell: echo $SHELL
-  register: current_shell
+  shell: dscl localhost -read /Local/Default/Users/{{ ansible_user_id }} UserShell
+  register: user_shell
   changed_when: false
 
 - name: ensure shell is zsh
   shell: sudo chsh -s /bin/zsh {{ ansible_user_id }}
-  when: current_shell.stdout != '/bin/zsh'
+  when: '"/bin/zsh" not in user_shell.stdout'
