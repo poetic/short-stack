@@ -41,7 +41,6 @@
   with_items:
     - { domain: NSGlobalDomain, key: NSNavPanelExpandedStateForSaveMode, value: true }
     - { domain: NSGlobalDomain, key: NSNavPanelExpandedStateForSaveMode2, value: true }
-    - { domain: NSGlobalDomain, key: NSNavPanelExpandedStateForSaveMode2, value: true }
     - { domain: com.apple.LaunchServices, key: LSQuarantine, value: false }
     - { domain: NSGlobalDomain, key: AppleMiniaturizeOnDoubleClick, value: false }
     - { domain: com.apple.dock, key: autohide, value: true }
