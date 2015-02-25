@@ -119,6 +119,11 @@ MMMM    M     oMM"MMo     M"
     git -C ~/.short-stack pull
   fi
 
+  out "Installing galaxy roles..."
+  # TODO: Replace this with an update option if one becomes available
+  # See: https://github.com/ansible/ansible/issues/6466
+  ansible-galaxy install -r ~/.short-stack/galaxy --force
+
   if [[ -f ~/.short-stack.yml ]]; then
     playbook=~/.short-stack.yml
   else
@@ -128,9 +133,9 @@ MMMM    M     oMM"MMo     M"
   out "Running ${playbook}"
 
   if ((verbose)); then
-    ansible-playbook $playbook -i ~/.short-stack/inventory --ask-sudo-pass -vvvv
+    ansible-playbook $playbook -i ~/.short-stack/inventory -vvvv
   else
-    ansible-playbook $playbook -i ~/.short-stack/inventory --ask-sudo-pass
+    ansible-playbook $playbook -i ~/.short-stack/inventory
   fi
 }
 
