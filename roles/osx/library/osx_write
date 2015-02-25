@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+# WANT_JSON
 
 module Plist
 
