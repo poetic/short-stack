@@ -4,6 +4,7 @@
   roles:
     - bootstrap
     - cask
+    - ruby
     - tmux
     - vim
     - zsh
@@ -16,7 +17,6 @@
     - node
     - osx
     - postgresql
-    - ruby
     - shell
 
   vars:
