@@ -34,9 +34,10 @@
   when: current_layout.stdout != "Dst2Src0"
 
 - name: ensure the ruby json gem is present
-  action: gem name=json state=present
+  gem: name=json state=present
+
 - name: ensure the ruby CFPropertyList gem is present
-  action: gem name=CFPropertyList state=present
+  gem: name=CFPropertyList state=present
 
 - name: Ensure osx configuration
   action: osx_write domain={{ item.domain }} key={{ item.key }} value={{ item.value }}
