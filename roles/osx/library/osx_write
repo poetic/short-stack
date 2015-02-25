@@ -71,10 +71,8 @@ def parse_value(value)
     true
   elsif value ==  'false' || value == 'False' || value == 'no'
     false
-  elsif value == '0'
-    0
-  elsif value == '1'
-    1
+  elsif (Integer(value) rescue false)
+    Integer(value)
   else
     value
   end
