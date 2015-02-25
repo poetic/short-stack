@@ -40,7 +40,7 @@
   gem: name=CFPropertyList state=present
 
 - name: Ensure osx configuration
-  action: osx_write domain={{ item.domain }} key={{ item.key }} value={{ item.value }}
+  osx_write: domain={{ item.domain }} key={{ item.key }} value={{ item.value }}
   with_items:
     - { domain: NSGlobalDomain, key: NSNavPanelExpandedStateForSaveMode, value: true }
     - { domain: NSGlobalDomain, key: NSNavPanelExpandedStateForSaveMode2, value: true }
