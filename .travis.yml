@@ -12,7 +12,6 @@ install:
 script:
 - bash install.sh --skip-short-stack
 - short-stack
-- short-stack
 - >
   short-stack
   | grep -q 'changed=0.*failed=0'
