@@ -71,3 +71,6 @@
 
 - name: set up iterm2 default config
   copy: src=com.googlecode.iterm2.plist dest=~/Library/Preferences/com.googlecode.iterm2.plist
+
+- name: add osx configuration to zsh
+  copy: src=osx.zsh dest={{ zshrc_d }}
