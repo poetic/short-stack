@@ -18,6 +18,7 @@
     - postgresql
     - ruby
     - shell
+    #- drupal
 
   vars:
 
