@@ -27,14 +27,13 @@ The base configuration files over time tend to get bloated and hard to manage.
 ## Usage
 
 Running `short-stack` will update short-stack if any updates are available and then it will provision your
-system to match your ~/.short-stack.yml file. If no ~/.short-stack.yml file is present, it will use stack.yml. Use
-`short-stack --generate` to generate a .short-stack.yml file.
+system to match your ~/.stack.yml file.
 
 See `short-stack --help` for full details on the `short-stack` command.
 
 ## Contributed Roles
 
-To add more roles, first add a line to the galaxy file so that they will be downloaded. Then add the appropriate configuration to your ~/.short-stack.yml file.
+To add more roles, first add a line to the galaxy file so that they will be downloaded. Then add the appropriate configuration to your ~/.stack.yml file.
 
 Community contributed roles are available to extend your stack. Visit https://galaxy.ansible.com/list#/roles and search for “short-stack”.
 

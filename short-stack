@@ -59,7 +59,7 @@ version="v0.0.1"
 # Print usage
 usage() {
   echo -n "Usage: $(basename $0) [options]
-  -g, --generate    Generate a .short-stack.yml
+  -g, --generate    Generate a .stack.yml
   -f, --force       Skip all user interaction
   -q, --quiet       Quiet (no output)
   -v, --verbose     Output more
@@ -74,26 +74,18 @@ rollback() {
 }
 
 # Put your script here
-generate() {
-  if [[ -f ~/.short-stack.yml ]]; then
-    if ! confirm "Overwrite ~/.short-stack.yml?"; then
-      die
-    fi
-  else
-    if ! confirm "Generate a .short-stack.yml?"; then
-      die
+copy_template() {
+  if [[ -f ~/.$1 ]]; then
+    if ! confirm "Overwrite ~/.$1?"; then
+      return
     fi
   fi
 
-  out # Need newline for clean output
-  if [[ -f ~/.short-stack/stack.yml ]]; then
-    cp ~/.short-stack/stack.yml ~/.short-stack.yml
-    success "~/.short-stack.yml created sucessfully."
-  else
-    die "~/.short-stack/stack.yml doesn't exist."
+  cp ~/.short-stack/templates/$1 ~/.$1
+  if [ $? -eq 0 ]
+  then success "~/.$1 created sucessfully."
+  else die $?
   fi
-
-  safe_exit
 }
 
 main() {
@@ -121,19 +113,21 @@ MMMM    M     oMM"MMo     M"
 
   export ANSIBLE_CONFIG=~/.short-stack/ansible.cfg
 
-  out "Installing galaxy roles..."
-  # TODO: Replace this with an update option if one becomes available
-  # See: https://github.com/ansible/ansible/issues/6466
-  ansible-galaxy install -r ~/.short-stack/galaxy --force
-
-  if [[ -f ~/.short-stack.yml ]]; then
-    playbook=~/.short-stack.yml
+  if [[ ! -f ~/.galaxy.yml ]]; then
+    copy_template galaxy.yml
   else
-    playbook=~/.short-stack/stack.yml
+    out "Installing galaxy roles..."
+    # TODO: Replace this with an update option if one becomes available
+    # See: https://github.com/ansible/ansible/issues/6466
+    ansible-galaxy install -r ~/.galaxy.yml --force
   fi
 
-  out "Running ${playbook}"
+  if [[ ! -f ~/.stack.yml ]]; then
+    copy_template stack.yml
+  fi
 
+  playbook=~/.stack.yml
+  out "Running ${playbook}"
   if ((verbose)); then
     ansible-playbook $playbook -i ~/.short-stack/inventory -vvvv
   else
