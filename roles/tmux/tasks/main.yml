@@ -21,6 +21,12 @@
 - name: add tmux theme.conf
   copy: src=theme.conf dest=~/.tmux.d/theme.conf
 
+- name: tap caskroom/cask so that brew-cask can be installed
+  homebrew_tap: tap=caskroom/cask state=present
+
+- name: install/update brew cask
+  homebrew: name=brew-cask state=latest
+
 - name: tap caskroom/fonts
   homebrew_tap: tap=caskroom/fonts state=present
 
