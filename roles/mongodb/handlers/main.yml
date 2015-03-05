@@ -1,2 +1,0 @@
-- name: start mongodb
-  command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.mongodb.plist
