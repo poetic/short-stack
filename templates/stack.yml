@@ -10,7 +10,6 @@
 - name: optional roles
   hosts: all
   roles:
-    - node
     - osx
     - postgresql
     - ruby
