@@ -1,6 +1,0 @@
----
-- name: install/update heroku-toolbelt
-  homebrew: name=heroku-toolbelt state=latest
-
-- name: add heroku plugin to zsh
-  copy: src=heroku.zsh dest={{ zshrc_d }}

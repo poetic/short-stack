@@ -10,15 +10,12 @@
 - name: optional roles
   hosts: all
   roles:
-    - cask
-    - heroku
     - mongodb
     - node
     - osx
     - postgresql
     - ruby
     - shell
-    #- drupal
 
   vars:
 
