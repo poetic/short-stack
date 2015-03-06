@@ -10,7 +10,5 @@
 - name: optional roles
   hosts: all
   roles:
-    - osx
-    - postgresql
     - ruby
     - shell

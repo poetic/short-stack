@@ -1,7 +1,0 @@
-- name: restart dock
-  shell: killall Dock
-  ignore_errors: yes
-
-- name: restart finder
-  shell: killall Finder
-  ignore_errors: yes

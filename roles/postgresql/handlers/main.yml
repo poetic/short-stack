@@ -1,2 +1,0 @@
-- name: start postgresql
-  command: launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
