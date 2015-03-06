@@ -1,2 +1,7 @@
 ---
-#- src: Poetic.short-stack-drupal
+#
+# To get a list of all short-stack roles see:
+# https://github.com/poetic?query=short-stack
+# e.g.
+# -  src: https://github.com/poetic/short-stack-osx
+#
