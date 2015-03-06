@@ -115,12 +115,12 @@ MMMM    M     oMM"MMo     M"
 
   if [[ ! -f ~/.galaxy.yml ]]; then
     copy_template galaxy.yml
-  else
-    out "Installing galaxy roles..."
-    # TODO: Replace this with an update option if one becomes available
-    # See: https://github.com/ansible/ansible/issues/6466
-    ansible-galaxy install -r ~/.galaxy.yml --force
   fi
+
+  out "Installing galaxy roles..."
+  # TODO: Replace this with an update option if one becomes available
+  # See: https://github.com/ansible/ansible/issues/6466
+  ansible-galaxy install -r ~/.galaxy.yml --force
 
   if [[ ! -f ~/.stack.yml ]]; then
     copy_template stack.yml
