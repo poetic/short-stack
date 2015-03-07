@@ -1,7 +1,3 @@
 ---
-- name: ensure *.d directories exist
-  file: path={{ item }} state=directory
-  with_items:
-    - "{{ tmux_d }}"
-    - "{{ vimrc_d }}"
-    - "{{ zshrc_d }}"
+- name: ensure stack.d directory exists
+  file: path={{ stack_d }} state=directory

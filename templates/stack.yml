@@ -1,14 +1,11 @@
 ---
-- name: core roles
+- name: short-stack
   hosts: all
   roles:
     - bootstrap
     - tmux
     - vim
     - zsh
-
-- name: optional roles
-  hosts: all
-  roles:
-    - ruby
     - shell
+  vars:
+    stack_d: ~/.stack.d
