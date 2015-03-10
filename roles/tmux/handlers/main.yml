@@ -1,0 +1,14 @@
+---
+- name: update tmux config
+  shell: find ~/.stack.d/*.tmux -maxdepth 0 -type f -exec basename {} \;
+  register: stack_d_tmux
+  notify: source tmux config
+
+  # Do not call this directly, notify "update tmux config"
+- name: source tmux config
+  lineinfile:
+  args:
+    dest: ~/.tmux.conf
+    line: source {{ stack_d }}/common.tmux
+    create: yes
+  with_items: stack_d_tmux.stdout_lines

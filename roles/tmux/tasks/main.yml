@@ -2,17 +2,9 @@
 - name: install/update tmux
   homebrew: name=tmux state=latest
 
-  name: ensure ~/.tmux.conf exists
-- file: path=~/.tmux.conf state=touch
-
-  name: add common.tmux to .tmux.conf
-- lineinfile:
-  args:
-    dest: ~/.tmux.conf
-    line: source {{ stack_d }}/common.tmux
-
 - name: add common tmux configuration
   copy: src=common.tmux dest={{ stack_d }}
+  notify: update tmux config
 
 - name: add tmux plugins to vim
   copy: src=tmux.bundle dest={{ stack_d }}/tmux.bundle
