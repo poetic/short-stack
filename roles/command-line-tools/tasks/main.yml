@@ -3,10 +3,10 @@
   homebrew: name={{ item }} state=latest
   with_items:
     - autojump
-    - chromedriver
-    - ctags
+    - chromedriver # TODO: move to roles that use chromedriver for testing
+    - ctags # TODO: move to vim role
     - hub
-    - reattach-to-user-namespace
+    - reattach-to-user-namespace # TODO: Move to tmux role
     - the_silver_searcher
     - wget
 
