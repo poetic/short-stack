@@ -22,8 +22,8 @@ alias gb='git branch'
 alias gc='git checkout'
 alias gcb='git checkout -b'
 
-# gsh shows the number of commits for the current repos for all developers
+# Show the total number of commits
 alias gsh="git shortlog | grep -E '^[  ]+\w+' | wc -l"
 
-# gu shows a list of all developers and the number of commits they've made
+# Shows a list of all developers and the number of commits they've made
 alias gu="git shortlog | grep -E '^[^ ]'"

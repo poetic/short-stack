@@ -11,4 +11,4 @@
     - wget
 
 - name: add shell configuration to zsh
-  copy: src=shell.zsh dest={{ stack_d }}
+  copy: src=command-line-tools.zsh dest={{ stack_d }}
