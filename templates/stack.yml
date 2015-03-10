@@ -3,7 +3,7 @@
   hosts: all
   roles:
     - core
-    - short-stack-command-line-tools
+    - command-line-tools
     - tmux
     - vim
     - zsh
