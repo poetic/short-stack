@@ -11,11 +11,14 @@
     dest: ~/.tmux.conf
     line: source {{ stack_d }}/common.tmux
 
+- name: add common tmux configuration
+  copy: src=common.tmux dest={{ stack_d }}
+
 - name: add tmux plugins to vim
   copy: src=tmux.bundle dest={{ stack_d }}/tmux.bundle
   notify: vim bundle install
 
-- name: add tmux configuration to zsh
+- name: add tmux zsh configuration
   copy: src=tmux.zsh dest={{ stack_d }}
 
 - name: ensure ~/Library/Fonts directory exists

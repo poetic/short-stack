@@ -1,1 +1,1 @@
-plugins+=(tmux tmuxinator)
+plugins+=(tmux)
