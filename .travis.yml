@@ -5,9 +5,6 @@ before_install:
 
 install:
 - sudo pip install ansible --quiet
-  # Travis uses RVM, gems used during provisioning should be installed here
-- gem install CFPropertyList
-- gem install json
 
 script:
 - bash install.sh --skip-short-stack
