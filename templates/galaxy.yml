@@ -2,6 +2,6 @@
 #
 # To get a list of all short-stack roles see:
 # https://github.com/poetic?query=short-stack
-# e.g.
-# -  src: https://github.com/poetic/short-stack-osx
-#
+
+# Recommended roles
+- src: https://github.com/poetic/short-stack-command-line-tools
