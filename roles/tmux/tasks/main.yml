@@ -2,6 +2,9 @@
 - name: install/update tmux
   homebrew: name=tmux state=latest
 
+- name: add copy/paste support
+  homebrew: name=reattach-to-user-namespace state=latest
+
 - name: add common tmux configuration
   copy: src=common.tmux dest={{ stack_d }}
   notify: update tmux config

@@ -2,6 +2,9 @@
 - name: install/update vim
   homebrew: name=vim state=latest
 
+- name: install/update ctags
+  homebrew: name=ctags state=latest
+
 - name: ensure spf13 is installed
   shell: curl https://j.mp/spf13-vim3 -L -o - | sh
   args:
