@@ -2,24 +2,24 @@
 - name: install/update tmux
   homebrew: name=tmux state=latest
 
+  name: ensure ~/.tmux.conf exists
+- file: path=~/.tmux.conf state=touch
+
+  name: add common.tmux to .tmux.conf
+- lineinfile:
+  args:
+    dest: ~/.tmux.conf
+    line: source {{ stack_d }}/common.tmux
+
 - name: add tmux plugins to vim
-  copy: src=tmux.bundle dest={{ vimrc_d }}/tmux.bundle
+  copy: src=tmux.bundle dest={{ stack_d }}/tmux.bundle
   notify: vim bundle install
 
-- name: copy .tmux.conf into ~
-  copy: src=tmux.conf dest=~/.tmux.conf
-
 - name: add tmux configuration to zsh
-  copy: src=tmux.zsh dest={{ zshrc_d }}
+  copy: src=tmux.zsh dest={{ stack_d }}
 
 - name: ensure ~/Library/Fonts directory exists
   file: path=~/Library/Fonts state=directory
-
-- name: ensure monaco powerline patched font
-  copy: src=monaco_for_powerline.otf dest='~/Library/Fonts/Monaco for Powerline.otf' force=no
-
-- name: add tmux theme.conf
-  copy: src=theme.conf dest=~/.tmux.d/theme.conf
 
 - name: tap caskroom/cask so that brew-cask can be installed
   homebrew_tap: tap=caskroom/cask state=present
@@ -30,18 +30,5 @@
 - name: tap caskroom/fonts
   homebrew_tap: tap=caskroom/fonts state=present
 
-- name: install/update powerline fonts
-  homebrew_cask: name={{ item }} state=present
-  with_items:
-    - font-anonymous-pro-for-powerline
-    - font-dejavu-sans-mono-for-powerline
-    - font-droid-sans-mono-for-powerline
-    - font-fira-mono-for-powerline
-    - font-inconsolata-dz-for-powerline
-    - font-inconsolata-for-powerline
-    - font-inconsolata-g-for-powerline
-    - font-liberation-mono-for-powerline
-    - font-meslo-lg-for-powerline
-    - font-sauce-code-powerline
-    - font-source-code-pro-for-powerline
-    - font-ubuntu-mono-powerline
+- name: ensure inconsolata-g exists
+  homebrew_cask: name=font-inconsolata-g-for-powerline state=present

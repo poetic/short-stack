@@ -15,15 +15,15 @@
     dest: ~/.spf13-vim-3
   notify: vim bundle install
 
-- name: add .fork shims for nice vimrc.d structure
+- name: add .fork shims for stack.d support
   copy: src={{ item }} dest=~/.{{ item }}
   with_items:
     - vimrc.bundles.fork
     - vimrc.before.fork
     - vimrc.fork
 
-- name: add configuration to vimrc.d
-  copy: src={{ item }} dest={{ vimrc_d }}
+- name: add configuration to stack.d
+  copy: src={{ item }} dest={{ stack_d }}
   with_items:
     - common.bundle
     - common.vimrc
@@ -33,4 +33,4 @@
   notify: vim bundle install
 
 - name: add vim configuration to zsh
-  copy: src=vim.zsh dest={{ zshrc_d }}
+  copy: src=vim.zsh dest={{ stack_d }}

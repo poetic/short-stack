@@ -67,9 +67,3 @@ set-option -g default-command "reattach-to-user-namespace -l $SHELL"
 
 tmux_conf_battery_symbol=heart
 tmux_conf_battery_symbol_count=5
-
-# check if we have any tmux.d/theme.conf files
-if-shell "[ -f ~/.tmux.d/theme.conf ]" 'source-file ~/.tmux.d/theme.conf'
-
-# Source .tmux.conf.local if exists
-if-shell "[ -f ~/.tmux.conf.local ]" 'source ~/.tmux.conf.local'

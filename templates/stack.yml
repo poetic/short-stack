@@ -2,10 +2,8 @@
 - name: short-stack
   hosts: all
   roles:
-    - bootstrap
+    - core
     - tmux
     - vim
     - zsh
     - shell
-  vars:
-    stack_d: ~/.stack.d

@@ -8,12 +8,12 @@
   copy: src=~/.oh-my-zsh/templates/zshrc.zsh-template dest=~/.zshrc force=no
 
 - name: override zsh_custom path
-  lineinfile: dest=~/.zshrc line=ZSH_CUSTOM={{ zshrc_d }}
+  lineinfile: dest=~/.zshrc line=ZSH_CUSTOM={{ stack_d }}
 
 - name: add zsh configuration
-  copy: src=zsh.zsh dest={{ zshrc_d }}
+  copy: src=zsh.zsh dest={{ stack_d }}
 
-- name: register current_shell variable
+- name: register user_shell variable
   shell: dscl localhost -read /Local/Default/Users/{{ ansible_user_id }} UserShell
   register: user_shell
   changed_when: false

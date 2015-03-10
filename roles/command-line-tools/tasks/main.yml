@@ -6,10 +6,9 @@
     - chromedriver
     - ctags
     - hub
-    - irssi
     - reattach-to-user-namespace
     - the_silver_searcher
     - wget
 
 - name: add shell configuration to zsh
-  copy: src=shell.zsh dest={{ zshrc_d }}
+  copy: src=shell.zsh dest={{ stack_d }}
