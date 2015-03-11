@@ -12,3 +12,6 @@
 
 - src: https://github.com/poetic/short-stack-vim
   name: vim
+
+- src: https://github.com/poetic/short-stack-zsh
+  name: zsh
