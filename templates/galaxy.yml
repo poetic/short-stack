@@ -6,3 +6,6 @@
 # Recommended roles
 - src: https://github.com/poetic/short-stack-command-line-tools
   name: command-line-tools
+
+- src: https://github.com/poetic/short-stack-tmux
+  name: tmux
