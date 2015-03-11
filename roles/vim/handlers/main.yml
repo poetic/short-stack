@@ -1,3 +1,0 @@
----
-- name: vim bundle install
-  shell: vim +BundleInstall! +BundleClean +qall

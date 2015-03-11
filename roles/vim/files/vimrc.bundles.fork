@@ -1,3 +1,0 @@
-for f in split(glob('~/.stack.d/*.bundle'), '\n')
-  exe 'source' f
-endfor

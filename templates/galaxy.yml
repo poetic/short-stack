@@ -9,3 +9,6 @@
 
 - src: https://github.com/poetic/short-stack-tmux
   name: tmux
+
+- src: https://github.com/poetic/short-stack-vim
+  name: vim
