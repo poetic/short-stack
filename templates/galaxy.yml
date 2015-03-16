@@ -15,3 +15,6 @@
 
 - src: https://github.com/poetic/short-stack-zsh
   name: zsh
+
+- src: https://github.com/poetic/short-stack-osx
+  name: osx
