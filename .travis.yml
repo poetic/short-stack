@@ -8,6 +8,7 @@ install:
 
 script:
 - bash install.sh --skip-short-stack
+- cp ~/.short-stack/templates/stack-test.yml ~/.stack.yml
 - short-stack
 - >
   short-stack
