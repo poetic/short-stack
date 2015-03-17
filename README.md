@@ -5,15 +5,6 @@
 
 Automate and maintain your Mac development environment in an easily maintainable and highly modular fashion.
 
-## Core Roles
-
-In order to build a highly modular/extensible framework, we had to choose a few core roles. They are as follows:
-
-* cask - Installs applications set in the cask variable using brew cask.
-* tmux - Installs tmux and setups up tmux.d structure.
-* vim - Installs vim & spf13 and sets up vimrc.d stucture for configuration and plugin bundles.
-* zsh - Installs oh-my-zsh and sets up zsh.d structure for oh-my-zsh plugins and configuration.
-
 ## .d Structure
 
 By tweaking the config files for tmux, vim (spf13) and zsh (oh-my-zsh) we were able to add a .d structure that allows any files dropped inside to be picked up.
