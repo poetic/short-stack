@@ -18,7 +18,7 @@ See `short-stack --help` for full details on the `short-stack` command.
 
 ## Additional Roles
 
-To add more roles, first add a line to the galaxy file so that they will be downloaded. Then add the appropriate configuration to your ~/.stack.yml file.
+To add more roles, first add a line to ~/.galaxy.yml so that they will be downloaded. Then add the appropriate configuration to your ~/.stack.yml file.
 
 Visit https://github.com/poetic/?query=short-stack to view a list of additional roles. View each role's tests/galaxy.yml and tests/stack.yml file for an example on how to use/integrate.
 
