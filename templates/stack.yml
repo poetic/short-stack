@@ -26,6 +26,9 @@
         - show_finder_status_bar
         - software_update_frequency
         - trackpad_right_click
+      notify:
+        - restart dock
+        - restart finder
   vars:
     cask:
       - dropbox
