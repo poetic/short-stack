@@ -25,4 +25,5 @@
         - software_update_frequency
         - trackpad_right_click
   vars:
-    - firefox
+    cask:
+      - firefox
