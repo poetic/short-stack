@@ -5,6 +5,8 @@ before_install:
 
 install:
 - sudo pip install ansible --quiet
+- gem install json
+- gem install CFPropertyList
 
 script:
 - bash install.sh --skip-short-stack
