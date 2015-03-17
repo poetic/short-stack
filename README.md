@@ -20,7 +20,7 @@ See `short-stack --help` for full details on the `short-stack` command.
 
 To add more roles, first add a line to the galaxy file so that they will be downloaded. Then add the appropriate configuration to your ~/.stack.yml file.
 
-Community contributed roles are available to extend your stack. Visit https://galaxy.ansible.com/list#/roles and search for “short-stack”.
+Visit https://github.com/poetic/?query=short-stack to view a list of additional roles. View each role's tests/galaxy.yml and tests/stack.yml file for an example on how to use/integrate.
 
 ## stack.d
 
