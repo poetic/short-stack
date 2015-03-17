@@ -5,12 +5,6 @@
 
 Automate and maintain your Mac development environment in an easily maintainable and highly modular fashion.
 
-## .d Structure
-
-By tweaking the config files for tmux, vim (spf13) and zsh (oh-my-zsh) we were able to add a .d structure that allows any files dropped inside to be picked up.
-Each role can add configuration to tmux, vim or zsh. This allows complete integration with the shell environment without polluting the base configuration files.
-The base configuration files over time tend to get bloated and hard to manage.
-
 ## Installation
 
 `bash <(curl -s curl -L https://raw.githubusercontent.com/poetic/short-stack/master/install.sh)`
@@ -27,6 +21,12 @@ See `short-stack --help` for full details on the `short-stack` command.
 To add more roles, first add a line to the galaxy file so that they will be downloaded. Then add the appropriate configuration to your ~/.stack.yml file.
 
 Community contributed roles are available to extend your stack. Visit https://galaxy.ansible.com/list#/roles and search for “short-stack”.
+
+## stack.d
+
+By tweaking the config files for tmux, vim (spf13) and zsh (oh-my-zsh) we were able to add a .d structure that allows any files dropped inside to be picked up.
+Each role can add configuration to tmux, vim or zsh. This allows complete integration with the shell environment without polluting the base configuration files.
+The base configuration files over time tend to get bloated and hard to manage.
 
 ## Compatibility
 
