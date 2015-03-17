@@ -28,14 +28,11 @@
         - trackpad_right_click
   vars:
     cask:
-      - dash
       - dropbox
-      - divvy
       - firefox
       - google-drive
       - iterm2
       - libreoffice
-      - slack
       - spotify
       - sourcetree
       - sublime-text
