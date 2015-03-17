@@ -3,11 +3,13 @@
   hosts: all
   roles:
     - core
+    - cask
     - command-line-tools
+    - osx
+    - ruby
     - tmux
     - vim
     - zsh
-    - osx
   tasks:
     - name: ensure osx configuration
       action: "{{ item }}"

@@ -4,8 +4,17 @@
 # https://github.com/poetic?query=short-stack
 
 # Recommended roles
+- src: https://github.com/poetic/short-stack-cask
+  name: cask
+
 - src: https://github.com/poetic/short-stack-command-line-tools
   name: command-line-tools
+
+- src: https://github.com/poetic/short-stack-osx
+  name: osx
+
+- src: https://github.com/poetic/short-stack-ruby
+  name: ruby
 
 - src: https://github.com/poetic/short-stack-tmux
   name: tmux
@@ -15,6 +24,3 @@
 
 - src: https://github.com/poetic/short-stack-zsh
   name: zsh
-
-- src: https://github.com/poetic/short-stack-osx
-  name: osx
