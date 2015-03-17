@@ -16,7 +16,7 @@ system to match your ~/.stack.yml file.
 
 See `short-stack --help` for full details on the `short-stack` command.
 
-## Contributed Roles
+## Additional Roles
 
 To add more roles, first add a line to the galaxy file so that they will be downloaded. Then add the appropriate configuration to your ~/.stack.yml file.
 
