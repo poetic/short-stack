@@ -14,18 +14,15 @@
     - name: ensure osx configuration
       action: "{{ item }}"
       with_items:
-        - autohide_dock
-        - bind_caps_to_ctrl
-        - dont_write_to_network
-        - hold_for_key_repeat
-        - initial_key_repeat
-        - key_repeat_speed
-        - new_app_prompt
-        - safari_dev_menu
-        - safari_developer_extras
-        - show_finder_status_bar
-        - software_update_frequency
-        - trackpad_right_click
+      - keyboard_initial_key_repeat_delay
+      - keyboard_key_repeat_rate
+      - keyboard_repeat_on_keydown
+      - finder_show_path_bar
+      - finder_show_status_bar
+      - finder_airdrop_over_ethernet
+      notify:
+        - restart dock
+        - restart finder
   vars:
     cask:
       - firefox
