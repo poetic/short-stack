@@ -4,7 +4,7 @@
 Vagrant.configure(2) do |config|
   # You'll need to build your own box:
   # https://github.com/timsutton/osx-vm-templates
-  config.vm.box = 'poetic/yosemite'
+  config.vm.box = 'osx/el-capitan'
 
   # Vagrant doesn't know how to do this with OS X
   config.ssh.insert_key = false

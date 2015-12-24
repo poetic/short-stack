@@ -3,10 +3,8 @@
   hosts: all
   roles:
     - core
-    - cask
     - command-line-tools
     - osx
-    - ruby
     - tmux
     - vim
     - zsh
@@ -23,15 +21,3 @@
       notify:
         - restart dock
         - restart finder
-  vars:
-    cask:
-      - dropbox
-      - firefox
-      - google-drive
-      - iterm2
-      - libreoffice
-      - spotify
-      - sourcetree
-      - sublime-text
-      - vagrant
-      - virtualbox

@@ -16,18 +16,10 @@ if [[ ! -x /usr/local/bin/brew ]]; then
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-# Install pip
-if [[ ! -x `which pip` ]]; then
-  echo 'Installing pip...'
-  sudo easy_install pip
-  sudo chown -R $USER /Library/Python/2.7/site-packages
-  sudo chown -R $USER /System/Library/Frameworks/Python.framework/Versions/2.7/include/python2.7
-fi
-
 # Install ansible
 if [[ ! -x `which ansible` ]]; then
   echo 'Installing ansible...'
-  pip install ansible --quiet
+  brew install ansible
 fi
 
 # Clone short-stack
