@@ -30,4 +30,4 @@ The base configuration files over time tend to get bloated and hard to manage.
 
 ## Compatibility
 
-Short Stack is being built and tested on OS X Yosemite (10.10) and OS X Mavericks (10.9).
+Short Stack is being built and tested on OS X El Capitan (10.11).
