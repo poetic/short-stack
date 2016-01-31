@@ -14,6 +14,7 @@ force=0
 quiet=0
 verbose=0
 generate=0
+install=0
 args=()
 # }}}
 
@@ -58,13 +59,18 @@ version="v0.0.1"
 
 # Print usage
 usage() {
-  echo -n "Usage: $(basename $0) [options]
-  -g, --generate    Generate a .stack.yml
+  echo -n -e "$(basename $0) $version
+  \033[33;mOptions\x1b[0m
+  \033[36;m-g, --generate    Generate a .stack.yml
   -f, --force       Skip all user interaction
   -q, --quiet       Quiet (no output)
   -v, --verbose     Output more
   -h, --help        Display this help and exit
-      --version     Output version information and exit
+      --version     Output version information and exit\x1b[0m
+
+  \033[33;mCommands\x1b[0m
+  \033[36;mi, install        Install current configuration.
+  \x1b[0m
 "
 }
 
@@ -88,7 +94,7 @@ copy_template() {
   fi
 }
 
-main() {
+install_run() {
   out '
       ooMMMo
     ooMMoMMoMMMoo
@@ -133,6 +139,14 @@ MMMM    M     oMM"MMo     M"
   else
     ansible-playbook $playbook -i ~/.short-stack/inventory
   fi
+}
+
+main() {
+  if [ -z "$*" ]; then
+    usage
+  fi
+
+  safe_exit
 }
 
 # }}}
@@ -184,8 +198,9 @@ safe_exit() {
 # }}}
 # Main loop {{{
 # Read the options and set stuff
-while [[ $1 = -?* ]]; do
+while [[ $1 = ?* ]]; do
   case $1 in
+    i|install) install=1 ;;
     -h|--help) usage >&2; safe_exit ;;
     --version) out "$(basename $0) $version"; safe_exit ;;
     -v|--verbose) verbose=1 ;;
@@ -203,11 +218,11 @@ args+=("$@")
 # }}}
 
 # Run it {{{
-if ((generate)); then
-  generate
+if ((install)); then
+  install_run
 fi
 
-# You should delegate your logic from the `main` function
+# Isolated short-stack command
 main
 
 # This has to be run last not to rollback changes we've made.
